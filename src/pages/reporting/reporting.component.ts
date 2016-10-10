@@ -15,29 +15,29 @@ export class ReportingComponent {
   ];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: any = {
-    animation: true,
+    animation: false,
     responsive: true
   };
   public lineChartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
+    { 
+      backgroundColor: 'rgba(255,159,177,0.2)',
+      borderColor: 'rgba(255,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
+    { 
+      backgroundColor: 'rgba(77,255,96,0.2)',
+      borderColor: 'rgba(77,255,96,1)',
       pointBackgroundColor: 'rgba(77,83,96,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
+    { 
+      backgroundColor: 'rgba(148,159,255,0.2)',
+      borderColor: 'rgba(148,159,255,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
@@ -56,5 +56,9 @@ export class ReportingComponent {
     //     data: [29.9, 71.5, 106.4, 129.2],
     //   }]
   }
+
+  chartHovered(event): void{}
+
+  chartClicked(event): void{}
 
 }
