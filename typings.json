@@ -1,0 +1,7 @@
+{
+  "globalDependencies": {
+    "cordova": "registry:dt/cordova#0.0.0+20160607055823",
+    "cordova/plugins/filesystem": "registry:dt/cordova/plugins/filesystem#0.0.0+20160823215534",
+    "cordova/plugins/filetransfer": "registry:dt/cordova/plugins/filetransfer#0.0.0+20160329171220"
+  }
+}

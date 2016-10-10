@@ -17,23 +17,23 @@
         </ion-card-header>
 
         <ion-list>
-            <ion-item *ngFor="let orderForm of orderForms" (click)="itemSelected(orderForm)" class="item item-icon-right">
+            <ion-item *ngFor="let orderForm of orderForms" class="item item-icon-right">
                 <ion-row>
                     <ion-col width-30>
                         <p>{{orderForm.signatureDate | date:'d/M/yyyy'}}</p>
                         <p>{{orderForm.signatureDate | date:'shortTime'}}</p>
                     </ion-col>
                     <ion-col width-30 center>
-                        <h3>{{orderForm.frameworkContractNumber}}</h3>
+                        <h3 (click)="itemSelected(orderForm)" >{{orderForm.frameworkContractNumber}}</h3>
                         <p> (request : {{orderForm.requestIdentifier}}) </p>
                     </ion-col>
                     <ion-col>
                     </ion-col>
                     <ion-col>
-                        <ion-icon name="paper"></ion-icon>
+                        <ion-icon name="paper" (click)="openOrderForm()"></ion-icon>
                     </ion-col>
                 </ion-row>
-                <i class="icon ion-chevron-right icon-accessory"></i>
+                <i class="icon ion-chevron-right icon-accessory" ></i>
             </ion-item>
         </ion-list>
     </ion-card>
