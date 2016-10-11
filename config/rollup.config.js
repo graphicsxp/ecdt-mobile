@@ -39,7 +39,8 @@ var rollupConfig = {
     builtins(),
     commonjs({
         namedExports: {
-            'node_modules/ng2-charts/ng2-charts.js': ['ChartsModule']
+            'node_modules/ng2-charts/ng2-charts.js': ['ChartsModule'],
+            '@progress/kendo-angular-charts': ['ChartsModule']
         }
     }),
     nodeResolve({

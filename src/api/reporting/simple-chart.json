@@ -1,0 +1,37 @@
+{
+    "valueAxis": {
+        "name": "Volume",
+        "min": "0",
+        "max": "10000"
+    },
+    "categoryAxis": {
+        "categories": [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ]
+    },
+    "series": [
+        8000,
+        3560,
+        5140,
+        6984,
+        1511,
+        150,
+        689,
+        780,
+        915,
+        1580,
+        5406,
+        7800
+    ]
+}

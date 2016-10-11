@@ -1,0 +1,17 @@
+<kendo-chart>
+	<kendo-chart-value-axis>
+		<kendo-chart-value-axis-item [title]="{ text: model.valueAxis.name }" [min]="model.valueAxis.min" [max]="model.valueAxis.max">
+		</kendo-chart-value-axis-item>
+	</kendo-chart-value-axis>
+
+	<kendo-chart-category-axis>
+		<kendo-chart-category-axis-item [title]="{text: model.categoryAxis.name }" [categories]="model.categoryAxis.categories">
+		</kendo-chart-category-axis-item>
+	</kendo-chart-category-axis>
+
+	<kendo-chart-series>
+		<kendo-chart-series-item *ngFor="let series of model.series" [name]="series.name" [data]="series.data" [type]="chartType"
+			stack="true">
+		</kendo-chart-series-item>
+	</kendo-chart-series>
+</kendo-chart>
