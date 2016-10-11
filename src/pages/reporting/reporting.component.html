@@ -3,14 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Page One</ion-title>
+    <ion-title>Reporting</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!--<chart [options]="options"></chart>-->
-  <canvas baseChart width="400" height="400" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-    [colors]="chartColors" [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <canvas baseChart width="400" height="400" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [colors]="chartColors"
+    [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
 
   <ion-list>
     <ion-item>

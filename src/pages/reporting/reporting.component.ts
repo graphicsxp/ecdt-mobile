@@ -15,11 +15,14 @@ export class ReportingComponent {
   ];
   public chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public chartOptions: any = {
-    animation: false,
-    responsive: true
+    //    animation: true,
+    responsive: true,
+    //  easing: "easeOutQuart"
+    scaleShowVerticalLines: false
+
   };
   public chartColors: Array<any> = [
-    { 
+    {
       backgroundColor: 'rgba(255,159,177,0.2)',
       borderColor: 'rgba(255,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -27,7 +30,7 @@ export class ReportingComponent {
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
-    { 
+    {
       backgroundColor: 'rgba(77,255,96,0.2)',
       borderColor: 'rgba(77,255,96,1)',
       pointBackgroundColor: 'rgba(77,83,96,1)',
@@ -35,7 +38,7 @@ export class ReportingComponent {
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
-    { 
+    {
       backgroundColor: 'rgba(148,159,255,0.2)',
       borderColor: 'rgba(148,159,255,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -47,18 +50,12 @@ export class ReportingComponent {
   public chartLegend: boolean = true;
   public chartType: string = 'line';
 
-  options: Object;
-
   constructor(public navCtrl: NavController) {
-    // this.options = {
-    //   title: { text: 'simple chart' },
-    //   series: [{
-    //     data: [29.9, 71.5, 106.4, 129.2],
-    //   }]
+
   }
 
-  chartHovered(event): void{}
+  chartHovered(event): void { }
 
-  chartClicked(event): void{}
+  chartClicked(event): void { }
 
 }
