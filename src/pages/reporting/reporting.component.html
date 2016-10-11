@@ -8,15 +8,18 @@
 </ion-header>
 
 <ion-content padding>
- <!--<chart [options]="options"></chart>-->
- <canvas baseChart width="400" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+  <!--<chart [options]="options"></chart>-->
+  <canvas baseChart width="400" height="400" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
+    [colors]="chartColors" [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Chart Type</ion-label>
+      <ion-select [(ngModel)]="chartType">
+        <ion-option value="line">Lines</ion-option>
+        <ion-option value="bar">Bars</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
