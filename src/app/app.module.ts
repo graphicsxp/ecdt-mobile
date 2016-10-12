@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+
 import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { StackedChartComponent } from '../pages/reporting/stackedChart/stacked-chart.component';
 import { SimpleChartComponent } from '../pages/reporting/simpleChart/simple-chart.component';
-import { Page2 } from '../pages/page2/page2';
+
 import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-list.component';
 import { OrderFormDetailComponent } from '../pages/orderForm/component/orderForm-detail.component';
+
+import { RequestListComponent } from '../pages/request/component/request-list.component';
+import { RequestDetailComponent } from '../pages/request/component/request-detail.component';
 
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BaseService } from '../providers/base.service';
@@ -23,27 +27,29 @@ import 'rxjs/Rx'; // load all features of reactive extensions
   declarations: [
     MyApp,
     ReportingComponent,
-    Page2,
     OrderFormListComponent,
     OrderFormDetailComponent,
     StackedChartComponent,
-    SimpleChartComponent
+    SimpleChartComponent,
+    RequestDetailComponent,
+    RequestListComponent
   ],
   imports: [
-   // ChartModule,
-   ChartsModule, 
+    // ChartModule,
+    ChartsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     ReportingComponent,
-    Page2,
     OrderFormListComponent,
     OrderFormDetailComponent,
     StackedChartComponent,
-    SimpleChartComponent
+    SimpleChartComponent,
+    RequestDetailComponent,
+    RequestListComponent
   ],
   providers: [LoadingService, BaseService]
 })
-export class AppModule {}
+export class AppModule { }

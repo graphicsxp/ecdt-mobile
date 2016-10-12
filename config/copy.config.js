@@ -35,6 +35,10 @@ module.exports = {
       src: 'src/api/reporting/simple-chart.json',
       dest: 'www/build/simple-chart.json'
     },
+    {
+      src: 'src/api/requests.json',
+      dest: 'www/build/requests.json'
+    },
     // {
     //   src: 'node_modules/requirejs/require.js',
     //   dest: 'www/build/require.js'

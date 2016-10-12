@@ -5,9 +5,12 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
+export interface IBase {
+    id: number;
+}
 
 @Injectable()
-export class BaseService<T> {
+export class BaseService<T extends IBase> {
   private _loadingService: LoadingService;
   public serviceUrl
   constructor(private _http: Http, @Inject(LoadingService) loadingService: LoadingService) {
@@ -24,10 +27,10 @@ export class BaseService<T> {
       .catch(this.handleError);
   }
 
-   getById(id: number): Observable<T>{
-        return this.getAll()
-            .map((items: T[]) => items.find(p => p['id'] === id));
-    }
+  getById(id: number): Observable<T> {
+    return this.getAll()
+      .map((items: T[]) => items.find(p => p.id === id));
+  }
 
   private handleError(error: Response) {
     console.error(error);

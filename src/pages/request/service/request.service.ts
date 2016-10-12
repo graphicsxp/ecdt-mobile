@@ -13,4 +13,8 @@ export class RequestService {
     getAll(): Observable<IRequest[]> {
         return this._baseService.getAll();
     }
+
+    getById(id: number): Observable<IRequest> {
+        return this._baseService.getById(id);
+    }
 }

@@ -3,8 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { ReportingComponent } from '../pages/reporting/reporting.component';
-import { Page2 } from '../pages/page2/page2';
 import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-list.component';
+import { RequestListComponent } from '../pages/request/component/request-list.component';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class MyApp {
 
   rootPage: any = ReportingComponent;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
@@ -23,8 +23,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Reporting', component: ReportingComponent },
-      // { title: 'Requests', component: RequestListComponent },
-      { title: 'Page 2', component: Page2 },
+      { title: 'Requests', component: RequestListComponent },
       { title: 'Order Forms', component: OrderFormListComponent }
     ];
 

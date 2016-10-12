@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Order form details
+        </ion-title>
+        <ion-buttons start>
+            <button (click)="dismiss()">
+        <span primary showWhen="ios">Back to list</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+    <ion-card *ngIf="myRequest">
+        <ion-item class="item item-divider item-energized">
+            
+            <h2>Request {{myRequest.requestIdentifier}}</h2>
+        </ion-item>
+        <ion-item>
+            <p>Target languages: {{myRequest.targetLanguages}}</p>
+        </ion-item>
+        <ion-item offset-40 class="item item-divider">
+            <h3>delivered on {{myRequest.deliveryDate  | date:'d/M/yyyy'}} at {{myRequest.deliveryDate | date:'shortTime'}}</h3>
+        </ion-item>
+
+    </ion-card>
+</ion-content>
