@@ -12,7 +12,7 @@ declare var cordova: any;
 
 @Component({
     templateUrl: '../template/orderForm-list.component.html',
-    providers: [OrderFormService, LoadingService]
+    providers: [OrderFormService]
 })
 export class OrderFormListComponent 
     implements OnInit {
@@ -25,7 +25,7 @@ export class OrderFormListComponent
                 private _navCtrl: NavController) { }
 
     ngOnInit(): void {
-        this._orderFormService.getOrderForms()
+        this._orderFormService.getAll()
             .subscribe(
                 orderForms => this.orderForms = orderForms,
                 error => this.errorMessage = <any>error

@@ -17,7 +17,7 @@ export class OrderFormDetailComponent implements OnInit {
                 private _orderFormService: OrderFormService) { }
 
     ngOnInit(): void {
-        this._orderFormService.getOrderForm(+this._navParams.get('id')).subscribe(
+        this._orderFormService.getById(+this._navParams.get('id')).subscribe(
             orderForm => this.myOrderForm = orderForm,
             error => this.errorMessage = <any>error
         );

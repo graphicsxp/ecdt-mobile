@@ -10,6 +10,8 @@ import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-l
 import { OrderFormDetailComponent } from '../pages/orderForm/component/orderForm-detail.component';
 
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import { BaseService } from '../providers/base.service';
+import { LoadingService } from '../pages/shared/service/loading-service';
 
 //import {ChartsModule} from 'ng2-charts/ng2-charts';
 //import { ChartModule } from 'angular2-highcharts';
@@ -42,6 +44,6 @@ import 'rxjs/Rx'; // load all features of reactive extensions
     StackedChartComponent,
     SimpleChartComponent
   ],
-  providers: []
+  providers: [LoadingService, BaseService]
 })
 export class AppModule {}
