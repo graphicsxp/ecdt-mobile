@@ -13,6 +13,9 @@ import { OrderFormDetailComponent } from '../pages/orderForm/component/orderForm
 import { RequestListComponent } from '../pages/request/component/request-list.component';
 import { RequestDetailComponent } from '../pages/request/component/request-detail.component';
 
+import { LoginComponent } from '../pages/shared/component/login.component';
+import { SignupComponent } from '../pages/shared/component/signup.component';
+
 import { BaseService } from '../providers/base.service';
 import { LoadingService } from '../pages/shared/service/loading-service';
 
@@ -22,6 +25,13 @@ import {ChartsModule} from 'ng2-charts/ng2-charts';
 
 import 'rxjs/Rx'; // load all features of reactive extensions
 
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'c2ece704'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -32,11 +42,14 @@ import 'rxjs/Rx'; // load all features of reactive extensions
     StackedChartComponent,
     SimpleChartComponent,
     RequestDetailComponent,
-    RequestListComponent
+    RequestListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     ChartsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +60,9 @@ import 'rxjs/Rx'; // load all features of reactive extensions
     StackedChartComponent,
     SimpleChartComponent,
     RequestDetailComponent,
-    RequestListComponent
+    RequestListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   providers: [LoadingService, BaseService]
 })

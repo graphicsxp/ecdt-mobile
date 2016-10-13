@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RequestService } from '../service/request.service';
 import { IRequest } from '../model/request.model';
@@ -8,13 +8,14 @@ import { RequestDetailComponent } from './request-detail.component';
   templateUrl: '../template/request-list.component.html',
   providers: [RequestService]
 })
-export class RequestListComponent {
+export class RequestListComponent implements OnInit {
   requests: IRequest[] = [];
   errorMessage: string;
 
   constructor(private _requestService: RequestService, private _navCtrl: NavController) { }
 
-  ionViewDidLoad() {
+  //ionViewDidLoad() {
+  ngOnInit(): void {
     console.log('Hello Request Page');
 
     this._requestService.getAll()

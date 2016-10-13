@@ -5,6 +5,9 @@ import { StatusBar } from 'ionic-native';
 import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-list.component';
 import { RequestListComponent } from '../pages/request/component/request-list.component';
+import { LoginComponent } from '../pages/shared/component/login.component';
+import { Auth, User } from '@ionic/cloud-angular';
+
 
 
 @Component({
@@ -13,12 +16,21 @@ import { RequestListComponent } from '../pages/request/component/request-list.co
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ReportingComponent;
+  rootPage: any = LoginComponent;
 
   pages: Array<{ title: string, component: any }>;
+  username: string;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, private _auth: Auth, private _user: User) {
     this.initializeApp();
+
+    let menu: any;
+
+    if (this._auth.isAuthenticated()) {
+      menu = { title: 'Welcome ' + this._user.details.name + ' (Logout)', component: null }
+    } else {
+      menu = { title: 'Login', component: LoginComponent }
+    }
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -27,6 +39,7 @@ export class MyApp {
       { title: 'Order Forms', component: OrderFormListComponent }
     ];
 
+    this.username = this._user.details.username;
   }
 
   initializeApp() {
@@ -41,5 +54,10 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    this._auth.logout();
+    this.nav.setRoot(LoginComponent);
   }
 }

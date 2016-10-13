@@ -1,32 +1,32 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>
-            Order form details
-        </ion-title>
-        <ion-buttons start>
-            <button (click)="dismiss()">
-        <span primary showWhen="ios">Back to list</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-        </ion-buttons>
-    </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>
+			Order form details
+		</ion-title>
+		<ion-buttons start>
+			<button (click)="dismiss()">
+                <span primary showWhen="ios">Back to list</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+              </button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+	<div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 
-    <ion-card *ngIf="myOrderForm">
-        <ion-item class="item item-divider item-energized">
-            
-            <h2>Order form #{{myOrderForm.frameworkContractNumber}}</h2>
-        </ion-item>
-        <ion-item>
-            <p>{{myOrderForm.requestIdentifier}}</p>
-        </ion-item>
-        <ion-item offset-40 class="item item-divider">
-            <h3>signed on {{myOrderForm.signatureDate | date:'d/M/yyyy'}} at {{myOrderForm.signatureDate | date:'shortTime'}}</h3>
-        </ion-item>
+	<ion-card *ngIf="myOrderForm">
+		<ion-item class="item item-divider item-energized">
 
-    </ion-card>
+			<h2>Order form #{{myOrderForm.frameworkContractNumber}}</h2>
+		</ion-item>
+		<ion-item>
+			<p>{{myOrderForm.requestIdentifier}}</p>
+		</ion-item>
+		<ion-item offset-40 class="item item-divider">
+			<h3>signed on {{myOrderForm.signatureDate | date:'d/M/yyyy'}} at {{myOrderForm.signatureDate | date:'shortTime'}}</h3>
+		</ion-item>
+
+	</ion-card>
 </ion-content>

@@ -5,7 +5,7 @@ import { IUser } from '../model/user-model'
 
 @Injectable()
 export class LoginService {
-    private _userUrl = './build/app/api/users/users.json';
+    private _userUrl = 'build/api/users/users.json';
     constructor(private _http: Http) { } 
 
     getUsers(): Observable<IUser[]> {

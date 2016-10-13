@@ -1,13 +1,13 @@
 import { IRequest } from '../model/request.model';
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { RequestService } from '../service/request.service';
 
 @Component({
     templateUrl: '../template/request-detail.component.html',
     providers: [RequestService]
 })
-export class RequestDetailComponent {
+export class RequestDetailComponent implements OnInit {
     myRequest: IRequest;
     errorMessage: string;
 
@@ -15,10 +15,17 @@ export class RequestDetailComponent {
         private _viewCtrl: ViewController,
         private _requestService: RequestService) { }
 
-    ionViewDidLoad() {
+    //ionViewDidLoad() {
+    ngOnInit(): void {
         this._requestService.getById(+this._navParams.get('id')).subscribe(
-            orderForm => this.myRequest = orderForm,
-            error => this.errorMessage = <any>error
+            orderForm => {
+                this.myRequest = orderForm;
+                console.log('get request successfully');
+            }, 
+            error => {
+                console.log(error);
+                this.errorMessage = <any>error;
+            }
         );
     }
 
