@@ -13,12 +13,12 @@ import { OrderFormDetailComponent } from '../pages/orderForm/component/orderForm
 import { RequestListComponent } from '../pages/request/component/request-list.component';
 import { RequestDetailComponent } from '../pages/request/component/request-detail.component';
 
-import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BaseService } from '../providers/base.service';
 import { LoadingService } from '../pages/shared/service/loading-service';
 
-//import {ChartsModule} from 'ng2-charts/ng2-charts';
-//import { ChartModule } from 'angular2-highcharts';
+import {ChartsModule} from 'ng2-charts/ng2-charts';
+//import { ChartsModule } from '@progress/kendo-angular-charts';
+
 
 import 'rxjs/Rx'; // load all features of reactive extensions
 
@@ -35,7 +35,6 @@ import 'rxjs/Rx'; // load all features of reactive extensions
     RequestListComponent
   ],
   imports: [
-    // ChartModule,
     ChartsModule,
     IonicModule.forRoot(MyApp)
   ],

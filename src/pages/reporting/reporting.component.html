@@ -8,8 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-	<!--<canvas baseChart width="400" height="400" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [colors]="chartColors"
-    [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>-->
 
 	<ion-list>
 		<ion-item>
@@ -22,10 +20,19 @@
 		</ion-item>
 	</ion-list>
 
+
 	<div *ngIf="model">
-		<stacked-chart *ngIf="selectedReport === 'breakdownPerMonthAndTargetLanguage'" [model]=model [chartType]="chartType"></stacked-chart>
-		<simple-chart *ngIf="selectedReport === 'breakdownPerMonth'" [model]="model" [chartType]="chartType"></simple-chart>
+		<!--<stacked-chart *ngIf="selectedReport === 'breakdownPerMonthAndTargetLanguage'" [model]=model [chartType]="chartType"></stacked-chart>-->
+		<!--<simple-chart   ></simple-chart>-->
+
+		<canvas *ngIf="selectedReport === 'breakdownPerMonthAndTargetLanguage' && !isloading" baseChart width="400" height="400" [datasets]="model.series" [labels]="model.categoryAxis.categories" [options]="chartOptions"
+			 [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+
+		<canvas *ngIf="selectedReport === 'breakdownPerMonth' && !isloading" baseChart width="400" height="400" [data]="series" [labels]="chartLabels" [options]="chartOptions"
+			 [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+
 	</div>
+
 
 	<ion-list>
 		<ion-item>
