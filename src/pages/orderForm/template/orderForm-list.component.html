@@ -1,40 +1,36 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
+	<ion-navbar>
+		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Order Forms</ion-title>
-    </ion-navbar>
+		<ion-title>Order Forms</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 
-<ion-content padding class="grid-basic-page">
-
-    <ion-card *ngIf='orderForms'>
-        <ion-card-header>
-            {{orderForms.length }} order forms were found.
-        </ion-card-header>
-
-        <ion-list>
-            <ion-item *ngFor="let orderForm of orderForms" class="item item-icon-right">
-                <ion-row>
-                    <ion-col width-30>
-                        <p>{{orderForm.signatureDate | date:'d/M/yyyy'}}</p>
-                        <p>{{orderForm.signatureDate | date:'shortTime'}}</p>
-                    </ion-col>
-                    <ion-col width-30 center>
-                        <h3 (click)="itemSelected(orderForm)" >{{orderForm.frameworkContractNumber}}</h3>
-                        <p> (request : {{orderForm.requestIdentifier}}) </p>
-                    </ion-col>
-                    <ion-col>
-                    </ion-col>
-                    <ion-col>
-                        <ion-icon name="paper" (click)="openOrderForm()"></ion-icon>
-                    </ion-col>
-                </ion-row>
-                <i class="icon ion-chevron-right icon-accessory" ></i>
-            </ion-item>
-        </ion-list>
-    </ion-card>
+<ion-content padding class="grid-basic-page" *ngIf="orderForms">
+	<ion-list>
+		<ion-list-header>
+			{{orderForms.length }} order forms were found.
+		</ion-list-header>
+		<ion-item *ngFor="let orderForm of orderForms" class="item item-icon-right">
+			<ion-row>
+				<ion-col width-30>
+					<p>{{orderForm.signatureDate | date:'d/M/yyyy'}}</p>
+					<p>{{orderForm.signatureDate | date:'shortTime'}}</p>
+				</ion-col>
+				<ion-col width-30 center>
+					<h3 (click)="itemSelected(orderForm)">{{orderForm.frameworkContractNumber}}</h3>
+					<p> (request : {{orderForm.requestIdentifier}}) </p>
+				</ion-col>
+				<ion-col>
+				</ion-col>
+				<ion-col>
+					<ion-icon name="paper" (click)="openOrderForm()"></ion-icon>
+				</ion-col>
+			</ion-row>
+			<i class="icon ion-chevron-right icon-accessory"></i>
+		</ion-item>
+	</ion-list>
 </ion-content>

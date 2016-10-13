@@ -1,34 +1,30 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
+	<ion-navbar>
+		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>My requests</ion-title>
-    </ion-navbar>
+		<ion-title>My requests</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 
-<ion-content padding class="grid-basic-page">
-
-    <ion-card *ngIf='requests'>
-        <ion-card-header>
-            {{requests.length }} requests were delivered.
-        </ion-card-header>
-
-        <ion-list>  
-            <ion-item *ngFor="let request of requests" class="item item-icon-right" (click)="itemSelected(request)">
-                <ion-row>
-                    <ion-col width-30>
-                        <p>{{request.deliveryDate | date:'d/M/yyyy'}}</p>
-                        <p>{{request.deliveryDate | date:'shortTime'}}</p>
-                    </ion-col>
-                    <ion-col center>
-                        <h3>{{request.requestIdentifier}}</h3>
-                    </ion-col>
-                </ion-row>
-                <i class="icon ion-chevron-right icon-accessory" ></i>
-            </ion-item>
-        </ion-list>
-    </ion-card>
+<ion-content padding class="grid-basic-page" *ngIf="requests">
+	<ion-list>
+		<ion-list-header>
+			{{requests.length }} requests were delivered.
+		</ion-list-header>
+		<ion-item *ngFor="let request of requests" class="item item-icon-right" (click)="itemSelected(request)">
+			<ion-row>
+				<ion-col width-30>
+					<p>{{request.deliveryDate | date:'d/M/yyyy'}}</p>
+					<p>{{request.deliveryDate | date:'shortTime'}}</p>
+				</ion-col>
+				<ion-col center>
+					<h3>{{request.requestIdentifier}}</h3>
+				</ion-col>
+			</ion-row>
+			<i class="icon ion-chevron-right icon-accessory"></i>
+		</ion-item>
+	</ion-list>
 </ion-content>
