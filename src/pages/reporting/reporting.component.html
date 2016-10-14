@@ -13,33 +13,31 @@
 		<ion-item>
 			<ion-label>Reports</ion-label>
 			<ion-select [(ngModel)]="selectedReport" (ngModelChange)="changeReport()">
-				<ion-option value="breakdownPerMonth">Breakdown by Month</ion-option>
-				<ion-option value="breakdownPerTargetLanguage">Breakdown by Target Language</ion-option>
+				<!--<ion-option value="breakdownPerMonth">Breakdown by Month</ion-option>-->
+				<!--<ion-option value="breakdownPerTargetLanguage">Breakdown by Target Language</ion-option>-->
 				<ion-option value="breakdownPerMonthAndTargetLanguage">Breakdown by Month/Target Language</ion-option>
 			</ion-select>
 		</ion-item>
 	</ion-list>
 
-
 	<div *ngIf="model">
 		<!--<stacked-chart *ngIf="selectedReport === 'breakdownPerMonthAndTargetLanguage'" [model]=model [chartType]="chartType"></stacked-chart>-->
 		<!--<simple-chart   ></simple-chart>-->
 
-		<canvas *ngIf="selectedReport === 'breakdownPerMonthAndTargetLanguage' && !isloading" baseChart width="400" height="400" [datasets]="model.series" [labels]="model.categoryAxis.categories" [options]="chartOptions"
-			 [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+		<canvas *ngIf="selectedReport === 'breakdownPerMonthAndTargetLanguage' && !isloading" baseChart width="400" height="400"
+			[datasets]="model.series" [labels]="model.categoryAxis.categories" [options]="chartOptions" [chartType]="chartType" (chartHover)="chartHovered($event)"
+			(chartClick)="chartClicked($event)"></canvas>
 
-		<canvas *ngIf="selectedReport === 'breakdownPerMonth' && !isloading" baseChart width="400" height="400" [data]="series" [labels]="chartLabels" [options]="chartOptions"
-			 [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-
+		<canvas *ngIf="selectedReport === 'breakdownPerMonth' && !isloading" baseChart width="400" height="400" [data]="series" [labels]="chartLabels"
+			[options]="chartOptions" [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
 	</div>
-
 
 	<ion-list>
 		<ion-item>
 			<ion-label>Chart Type</ion-label>
 			<ion-select [(ngModel)]="chartType">
 				<ion-option value="bar">Bars</ion-option>
-				<ion-option value="column">Columns</ion-option>
+				<!--<ion-option value="column">Columns</ion-option>-->
 				<ion-option value="line">Lines</ion-option>
 			</ion-select>
 		</ion-item>

@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-title>
-			Request deliveries
+		<ion-title *ngIf="myRequest">
+			Request {{myRequest.requestIdentifier}}
 		</ion-title>
 		<ion-buttons start>
 			<button (click)="dismiss()">
@@ -17,12 +17,17 @@
 	<div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 
 	<ion-card *ngIf="myRequest">
-		<ion-item>
-			<p>Target languages: {{myRequest.targetLanguages}}</p>
-		</ion-item>
-		<ion-item offset-40 class="item item-divider">
-			<h3>delivered on {{myRequest.deliveryDate | date:'d/M/yyyy'}} at {{myRequest.deliveryDate | date:'shortTime'}}</h3>
-		</ion-item>
-
+		<ion-grid>
+			<ion-row>
+				<ion-col width-20>
+					<ion-badge>{{myRequest.numberOfJobs}} jobs</ion-badge>
+				</ion-col>
+				<ion-col>
+					<p> delivered on {{myRequest.deliveryDate | date:'d/M/yyyy'}} at {{myRequest.deliveryDate | date:'shortTime'}}</p>
+					<p><ion-note>Source language(s): {{myRequest.sourceLanguages}}</ion-note></p>
+					<p><ion-note>Target language(s): {{myRequest.targetLanguages}}</ion-note></p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 	</ion-card>
 </ion-content>

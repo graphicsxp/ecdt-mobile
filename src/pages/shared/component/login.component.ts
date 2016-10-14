@@ -2,7 +2,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 // import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { LoginService } from '../service/login-service';
-import { OrderFormListComponent } from '../../orderForm/component/orderForm-list.component'
+import { RequestListComponent } from '../../request/component/request-list.component'
 import { SignupComponent } from './signup.component';
 
 import { Auth } from '@ionic/cloud-angular';
@@ -54,7 +54,7 @@ export class LoginComponent {
         this.showLoader();
         this._auth.login("basic", { 'email': this.email, 'password': this.password }).then((res) => {
             this.loading.dismiss();
-            this._navController.setRoot(OrderFormListComponent);
+            this._navController.setRoot(RequestListComponent);
         }, (err) => {
             this.loading.dismiss();
             alert('Authentication failed.');

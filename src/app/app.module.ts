@@ -16,10 +16,12 @@ import { RequestDetailComponent } from '../pages/request/component/request-detai
 import { LoginComponent } from '../pages/shared/component/login.component';
 import { SignupComponent } from '../pages/shared/component/signup.component';
 
+import { HeaderComponent } from '../pages/shared/component/header.component';
+
 import { BaseService } from '../providers/base.service';
 import { LoadingService } from '../pages/shared/service/loading-service';
 
-import {ChartsModule} from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 //import { ChartsModule } from '@progress/kendo-angular-charts';
 
 
@@ -44,7 +46,8 @@ const cloudSettings: CloudSettings = {
     RequestDetailComponent,
     RequestListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent
   ],
   imports: [
     ChartsModule,

@@ -1,20 +1,42 @@
 <ion-menu [content]="content">
 	<ion-header>
-		<ion-toolbar>
-			<ion-title>Menu</ion-title>
-		</ion-toolbar>
+		<ion-item>
+			<ion-avatar item-left>
+				<img src="assets/images/favicon-32x32.png">
+			</ion-avatar>
+			<h2>Welcome {{_user.details.name}} </h2>
+			<p>You are logged in.</p>
+		</ion-item>
 	</ion-header>
 
-	<ion-content>
+	<ion-content class="app-component">
 		<ion-list>
-			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+			<ion-item menuClose (click)="openPage(requestListComponent)">
+				Delivered requests
+				<ion-badge item-right item>2</ion-badge>
+			</ion-item>
+			<ion-item menuClose (click)="openPage(reportingComponent)">
+				Reporting
+			</ion-item>
+			<!--<ion-item menuClose (click)="openPage(orderFormListComponent)">
+				Order Forms
+				<ion-note item-right item>2</ion-note>
+			</ion-item>-->
+			<ion-item style="position: absolute; bottom: 0px; width: 100%">
+				<div style="text-align: center">
+					<a menuClose (click)="logout()">Logout</a>
+				</div>
+			</ion-item>
+
 		</ion-list>
-			<span ion-item>Logged in as {{_user.details.name}} <a (click)="logout()">(logout)</a></span>
-    
+
 	</ion-content>
 
+	<!--<ion-footer>
+		<ion-toolbar (click)="logout()">
+			<ion-title>Logout</ion-title>
+		</ion-toolbar>
+	</ion-footer>-->
 </ion-menu>
 
 <!--<cdt-menu [content]='content' [nav]='nav'></cdt-menu>-->
@@ -22,3 +44,9 @@
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<!--<ion-tabs>
+	<ion-tab tabIcon="call"  tabBadge="3" tabBadgeStyle="danger"></ion-tab>
+	<ion-tab tabIcon="chatbubbles"  tabBadge="14" tabBadgeStyle="danger"></ion-tab>
+	<ion-tab tabIcon="musical-notes" ></ion-tab>
+</ion-tabs>-->

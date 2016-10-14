@@ -3,8 +3,7 @@ import { IOrderForm } from '../model/orderForm-model';
 import { NavController, ModalController } from 'ionic-angular';
 import { OrderFormDetailComponent } from './orderForm-detail.component';
 import { OrderFormService } from '../service/orderForm-service';
-import { LoadingService } from '../../shared/service/loading-service';
-import { Vibration, Badge, Transfer, File, FileOpener } from 'ionic-native';
+import { Vibration,  Transfer, FileOpener } from 'ionic-native';
 
 //import * as  _ from 'lodash';
 
@@ -23,7 +22,7 @@ export class OrderFormListComponent
     constructor(private _orderFormService: OrderFormService, 
                 private _modalCtrl: ModalController,
                 private _navCtrl: NavController) { }
-
+ 
     ngOnInit(): void {
         this._orderFormService.getAll()
             .subscribe(

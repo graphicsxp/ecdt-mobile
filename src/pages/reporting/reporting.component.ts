@@ -11,7 +11,7 @@ import { LoadingService } from '../shared/service/loading-service';
 export class ReportingComponent implements OnInit {
 
   public model;
-  public selectedReport = 'breakdownPerMonth';
+  public selectedReport = 'breakdownPerMonthAndTargetLanguage';
   public errorMessage = '';
 
   public chartData: Array<any> = [

@@ -1,13 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+import { Nav, Platform, AlertController } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-list.component';
 import { RequestListComponent } from '../pages/request/component/request-list.component';
 import { LoginComponent } from '../pages/shared/component/login.component';
 import { Auth, User } from '@ionic/cloud-angular';
-
 
 
 @Component({
@@ -20,8 +19,11 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
   username: string;
+  orderFormListComponent = OrderFormListComponent;
+  requestListComponent = RequestListComponent;
+  reportingComponent = ReportingComponent;
 
-  constructor(public platform: Platform, private _auth: Auth, private _user: User) {
+  constructor(public platform: Platform, private _auth: Auth, private _user: User, private _alertController: AlertController) {
     this.initializeApp();
 
     let menu: any;
@@ -32,13 +34,6 @@ export class MyApp {
       menu = { title: 'Login', component: LoginComponent }
     }
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Reporting', component: ReportingComponent },
-      { title: 'Requests', component: RequestListComponent },
-      { title: 'Order Forms', component: OrderFormListComponent }
-    ];
-
     this.username = this._user.details.username;
   }
 
@@ -47,17 +42,39 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+
+      if (Splashscreen) {
+        setTimeout(() => {
+          Splashscreen.hide();
+        }, 100);
+      }
     });
   }
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page);
   }
 
   logout() {
-    this._auth.logout();
-    this.nav.setRoot(LoginComponent);
+
+    let confirm = this._alertController.create({
+      title: 'Confirm',
+      message: 'Are you sure you want to logout ?',
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this._auth.logout();
+            this.nav.setRoot(LoginComponent);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }
