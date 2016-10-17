@@ -7,14 +7,11 @@ import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { StackedChartComponent } from '../pages/reporting/stackedChart/stacked-chart.component';
 import { SimpleChartComponent } from '../pages/reporting/simpleChart/simple-chart.component';
 
-import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-list.component';
-import { OrderFormDetailComponent } from '../pages/orderForm/component/orderForm-detail.component';
+import { RequestListComponent } from '../pages/request/request-list/request-list.component';
+import { RequestDetailComponent } from '../pages/request/request-detail/request-detail.component';
 
-import { RequestListComponent } from '../pages/request/component/request-list.component';
-import { RequestDetailComponent } from '../pages/request/component/request-detail.component';
-
-import { LoginComponent } from '../pages/shared/component/login.component';
-import { SignupComponent } from '../pages/shared/component/signup.component';
+import { LoginComponent } from '../pages/login/login.component';
+import { SignupComponent } from '../pages/signup/signup.component';
 
 import { HeaderComponent } from '../pages/shared/component/header.component';
 
@@ -39,8 +36,6 @@ const cloudSettings: CloudSettings = {
   declarations: [
     MyApp,
     ReportingComponent,
-    OrderFormListComponent,
-    OrderFormDetailComponent,
     StackedChartComponent,
     SimpleChartComponent,
     RequestDetailComponent,
@@ -58,8 +53,6 @@ const cloudSettings: CloudSettings = {
   entryComponents: [
     MyApp,
     ReportingComponent,
-    OrderFormListComponent,
-    OrderFormDetailComponent,
     StackedChartComponent,
     SimpleChartComponent,
     RequestDetailComponent,

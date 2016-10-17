@@ -1,18 +1,95 @@
 [
     {
         "id": 1,
-        "targetLanguages": ["FR", "DE"],
-        "sourceLanguages": ["EN"],
-        "numberOfJobs": 2,
+        "targetLanguages": [
+            "FR",
+            "DE"
+        ],
+        "sourceLanguages": [
+            "EN"
+        ],
         "requestIdentifier": "2016/000001",
-        "deliveryDate": "2016-09-12T09:43:02.000"
+        "deliveryDate": "2016-09-12T09:43:02.000",
+        "jobs": [
+            {
+                "id": 1,
+                "volume": 15,
+                "sourceLanguage": "EN",
+                "targetLanguage": "FR",
+                "deliveryUrl": "",
+                "price": "41.00"
+            },
+            {
+                "id": 2,
+                "volume": 21,
+                "sourceLanguage": "EN",
+                "targetLanguage": "DE",
+                "deliveryUrl": "",
+                "price": "85.00"
+            }
+        ]
     },
     {
         "id": 2,
-        "targetLanguages": ["DE", "ES", "NO"],
-        "sourceLanguages": ["EN"],
-        "numberOfJobs": 3,
+        "targetLanguages": [
+            "DE",
+            "ES",
+            "NO"
+        ],
+        "sourceLanguages": [
+            "EN, FR"
+        ],
         "requestIdentifier": "2016/000002",
-        "deliveryDate":"2016-09-11T10:31:02.000"   
+        "deliveryDate": "2016-09-11T10:31:02.000",
+        "jobs": [
+            {
+                "id": 1,
+                "volume": 15,
+                "sourceLanguage": "EN",
+                "targetLanguage": "ES",
+                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "price": "145.00"
+            },
+            {
+                "id": 2,
+                "volume": 21,
+                "sourceLanguage": "EN",
+                "targetLanguage": "DE",
+                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "price": "126.00"                
+            },
+            {
+                "id": 3,
+                "volume": 5,
+                "sourceLanguage": "EN",
+                "targetLanguage": "NO",
+                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "price": "96.00" 
+            },
+            {
+                "id": 1,
+                "volume": 15,
+                "sourceLanguage": "FR",
+                "targetLanguage": "ES",
+                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "price": "246.00" 
+            },
+            {
+                "id": 2,
+                "volume": 21,
+                "sourceLanguage": "FR",
+                "targetLanguage": "DE",
+                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "price": "57.00" 
+            },
+            {
+                "id": 3,
+                "volume": 5,
+                "sourceLanguage": "FR",
+                "targetLanguage": "NO",
+                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "price": "12.00" 
+            }
+        ]
     }
 ]

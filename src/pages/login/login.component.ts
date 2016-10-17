@@ -1,17 +1,15 @@
 import { NavController, LoadingController } from 'ionic-angular';
-// import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { LoginService } from '../service/login-service';
-import { RequestListComponent } from '../../request/component/request-list.component'
-import { SignupComponent } from './signup.component';
+import { LoginService } from '../shared/service/login-service';
+import { RequestListComponent } from '../request/request-list/request-list.component'
+import { SignupComponent } from '../signup/signup.component';
 
 import { Auth } from '@ionic/cloud-angular';
 
-
 @Component({
-    templateUrl: '../template/login.component.html',
-    providers: [LoginService],
-    // styleUrls: ['../template/login.component.scss']
+    selector: 'login-page',
+    templateUrl: './login.component.html',
+    providers: [LoginService]
 })
 export class LoginComponent {
     signingUp: boolean = true;
@@ -41,16 +39,6 @@ export class LoginComponent {
     }
 
     login() {
-        // this._loginService.login(this.username, this.password).subscribe(
-        //     data => {
-        //         if (data) {
-        //             //Navigate to home page                             
-        //             this._navController.setRoot(OrderFormListComponent);
-        //         } else {
-        //             this.errorMessage = 'username or password is not correct';
-        //         }
-        //     }
-        // )
         this.showLoader();
         this._auth.login("basic", { 'email': this.email, 'password': this.password }).then((res) => {
             this.loading.dismiss();

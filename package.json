@@ -30,7 +30,8 @@
   },
   "config": {
     "ionic_copy": "./config/copy.config.js",
-    "ionic_rollup": "./config/rollup.config.js"
+    "ionic_rollup": "./config/rollup.config.js",
+    "ionic_sass": "./config/sass.config.js"
   },
   "description": "ecdt-mobile: An Ionic project",
   "cordovaPlugins": [

@@ -3,9 +3,8 @@ import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { ReportingComponent } from '../pages/reporting/reporting.component';
-import { OrderFormListComponent } from '../pages/orderForm/component/orderForm-list.component';
-import { RequestListComponent } from '../pages/request/component/request-list.component';
-import { LoginComponent } from '../pages/shared/component/login.component';
+import { RequestListComponent } from '../pages/request/request-list/request-list.component';
+import { LoginComponent } from '../pages/login/login.component';
 import { Auth, User } from '@ionic/cloud-angular';
 
 
@@ -19,7 +18,6 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
   username: string;
-  orderFormListComponent = OrderFormListComponent;
   requestListComponent = RequestListComponent;
   reportingComponent = ReportingComponent;
 

@@ -1,14 +1,27 @@
 .ios, .md {
  
-    signup-page {
+    login-page {
  
+        ion-header {
+            background-color: map-get($colors, light);
+        }
+
+        ion-title {
+            color: #fff;
+        }
+
         ion-content {
-            background-color: map-get($colors, secondary);
+            background-color: map-get($colors, primary);
         }
  
         scroll-content {
             display: flex;
             flex-direction: column;
+        }
+ 
+        ion-row {
+            align-items: center;
+            text-align: center;
         }
  
         ion-item {
@@ -23,26 +36,25 @@
         ion-list {
             margin: 0;
         }
+
+      
  
-        .heading-text {
-            flex: 1;
-            align-items: center;
-            text-align: center;
+        .login-logo {
+            flex: 2;
         }
  
-        .heading-text h3 {
+        .login-form {
+            flex: 1;
+        }
+ 
+        .create-account {
             color: #fff;
+            text-decoration: underline;
+            background: none;
         }
  
- 
-        .account-form {
-            flex: 1;
-        }
- 
-        .continue-button {
-            width: 100%;
+        .login-button {
             border-radius: 30px;
-            margin-top: 30px;
             font-size: 0.9em;
             background-color: transparent;
             border: 1px solid #fff;

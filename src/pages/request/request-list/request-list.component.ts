@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RequestService } from '../service/request.service';
 import { IRequest } from '../model/request.model';
-import { RequestDetailComponent } from './request-detail.component';
+import { RequestDetailComponent } from '../request-detail/request-detail.component';
 
 @Component({
-  templateUrl: '../template/request-list.component.html',
+  selector: 'request-list',
+  templateUrl: './request-list.component.html',
   providers: [RequestService]
 })
 export class RequestListComponent implements OnInit {

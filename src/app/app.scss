@@ -21,3 +21,12 @@
     align-self: flex-start;
     margin-top: 14px;
   }
+
+   .opaque {
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+
+    .opaque .toolbar-background {
+        background-color: rgba(#f8f8f8, 0.55);
+    }

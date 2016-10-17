@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-// import { Auth } from '../../providers/auth';
-import { OrderFormListComponent } from '../../orderForm/component/orderForm-list.component'
 import { Auth } from '@ionic/cloud-angular';
+import { RequestListComponent } from '../request/request-list/request-list.component'
 
 
 @Component({
-    templateUrl: '../template/signup.component.html'
+    selector: 'signup-page',
+    templateUrl: './signup.component.html'
 })
 export class SignupComponent {
 
@@ -26,7 +26,7 @@ export class SignupComponent {
             return this._auth.login('basic', { 'email': this.email, 'password': this.password }).then(() => {
                 this.loading.dismiss();
 
-                this._navController.setRoot(OrderFormListComponent);
+                this._navController.setRoot(RequestListComponent);
             });
         }, (err) => {
             this.loading.dismiss();

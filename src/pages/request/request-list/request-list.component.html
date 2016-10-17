@@ -1,0 +1,39 @@
+<ion-header  class="opaque">
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Delivered requests</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+<ion-content padding class="grid-basic-page" *ngIf="requests" fullscreen>
+	<ion-list>
+		<ion-list-header>
+			{{requests.length }} requests were delivered.
+		</ion-list-header>
+		<ion-item *ngFor="let request of requests" class="item item-icon-right" (click)="itemSelected(request)">
+			<ion-grid>
+				<ion-row>
+					<ion-col width-20>
+						<ion-badge>{{request.jobs.length}} jobs</ion-badge>
+					</ion-col>
+					<ion-col>
+						<p> delivered on {{request.deliveryDate | date:'d/M/yyyy'}} at {{request.deliveryDate | date:'shortTime'}}</p>
+						<p>
+							<ion-note>Source language(s): {{request.sourceLanguages}}</ion-note>
+						</p>
+						<p>
+							<ion-note>Target language(s): {{request.targetLanguages}}</ion-note>
+						</p>
+					</ion-col>
+					<!--<ion-col>
+						<ion-icon item-right name="download" (click)="openDelivery(job.deliveryUrl)"></ion-icon>
+					</ion-col>		-->
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+</ion-content>
