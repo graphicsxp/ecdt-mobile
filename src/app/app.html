@@ -15,7 +15,7 @@
         Delivered requests
         <ion-badge item-right item>{{numberOfDeliveredRequests}}</ion-badge>
       </ion-item>
-      <ion-item menuClose (click)="openPage(reportingComponent)" *ngIf="numberOfDeliveredRequests > 0">
+      <ion-item menuClose (click)="openPage(reportingComponent)">
         Reporting
       </ion-item>
       <!--<ion-item menuClose (click)="openPage(orderFormListComponent)">
