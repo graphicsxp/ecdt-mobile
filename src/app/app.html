@@ -1,44 +1,45 @@
 <ion-menu [content]="content">
-	<ion-header>
-		<ion-item>
-			<ion-avatar item-left>
-				<img src="assets/images/favicon-32x32.png">
-			</ion-avatar>
-			<h2>Welcome {{_user.details.name}} </h2>
-			<p>You are logged in.</p>
-		</ion-item>
-	</ion-header>
+  <ion-header>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="assets/images/favicon-32x32.png">
+      </ion-avatar>
+      <h2>Welcome {{_user.details.name}} </h2>
+      <p>You are logged in.</p>
+    </ion-item>
+  </ion-header>
 
-	<ion-content class="app-component">
-		<ion-list>
-			<ion-item menuClose (click)="openPage(requestListComponent)">
-				Delivered requests
-				<ion-badge item-right item>2</ion-badge>
-			</ion-item>
-			<ion-item menuClose (click)="openPage(reportingComponent)">
-				Reporting
-			</ion-item>
-			<!--<ion-item menuClose (click)="openPage(orderFormListComponent)">
+  <ion-content class="app-component">
+    <ion-list>
+      <ion-item menuClose (click)="openPage(requestListComponent)">
+        Delivered requests
+        <ion-badge item-right item>2</ion-badge>
+      </ion-item>
+      <ion-item menuClose (click)="openPage(reportingComponent)">
+        Reporting
+      </ion-item>
+      <!--<ion-item menuClose (click)="openPage(orderFormListComponent)">
 				Order Forms
 				<ion-note item-right item>2</ion-note>
 			</ion-item>-->
-			<ion-item style="position: absolute; bottom: 0px; width: 100%">
+      <!--<ion-item style="position: absolute; bottom: 0px; width: 100%">
 				<div style="text-align: center">
 					<a menuClose (click)="logout()">Logout</a>
 				</div>
-			</ion-item>
-
-		</ion-list>
-
-	</ion-content>
-
-	<!--<ion-footer>
+			</ion-item>-->
+    </ion-list>
+    <div style="position: absolute; bottom: 40px; width: 100%">
+      <div style="text-align: center">
+        <a menuClose (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </ion-content>
+  <!--<ion-footer>
 		<ion-toolbar (click)="logout()">
 			<ion-title>Logout</ion-title>
 		</ion-toolbar>
 	</ion-footer>-->
 </ion-menu>
-
 <!--<cdt-menu [content]='content' [nav]='nav'></cdt-menu>-->
 
 
