@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "253214739305",
+    "firebase_url": "https://ecdt-mobile.firebaseio.com",
+    "project_id": "ecdt-mobile",
+    "storage_bucket": "ecdt-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253214739305:android:7cf50a304129544f",
+        "android_client_info": {
+          "package_name": "com.ecdtmobile.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253214739305-a8ilc5qhkbejs1k7okt7e5qp5pk57the.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP3LQsUkgacQNN-9Ct4pZdmVDQKTkCFss"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

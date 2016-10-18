@@ -1,4 +1,4 @@
-<ion-header  class="opaque">
+<ion-header class="opaque">
 	<ion-navbar>
 		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -12,12 +12,12 @@
 <ion-content padding class="grid-basic-page" *ngIf="requests" fullscreen>
 	<ion-list>
 		<ion-list-header>
-			{{requests.length }} requests were delivered.
+			{{requests.length }} requests were delivered
 		</ion-list-header>
 		<ion-item *ngFor="let request of requests" class="item item-icon-right" (click)="itemSelected(request)">
 			<ion-grid>
 				<ion-row>
-					<ion-col width-20>
+					<ion-col width-40>
 						<ion-badge>{{request.jobs.length}} jobs</ion-badge>
 					</ion-col>
 					<ion-col>
@@ -29,9 +29,6 @@
 							<ion-note>Target language(s): {{request.targetLanguages}}</ion-note>
 						</p>
 					</ion-col>
-					<!--<ion-col>
-						<ion-icon item-right name="download" (click)="openDelivery(job.deliveryUrl)"></ion-icon>
-					</ion-col>		-->
 				</ion-row>
 			</ion-grid>
 		</ion-item>

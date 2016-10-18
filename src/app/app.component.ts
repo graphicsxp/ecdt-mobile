@@ -6,7 +6,7 @@ import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { Auth, User } from '@ionic/cloud-angular';
-
+import { Push, PushToken } from '@ionic/cloud-angular';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,8 +20,9 @@ export class MyApp {
   username: string;
   requestListComponent = RequestListComponent;
   reportingComponent = ReportingComponent;
+  numberOfDeliveredRequests: number = 0;
 
-  constructor(public platform: Platform, private _auth: Auth, private _user: User, private _alertController: AlertController) {
+  constructor(public platform: Platform, private _auth: Auth, private _user: User, private _alertController: AlertController, public push: Push) {
     this.initializeApp();
 
     let menu: any;
@@ -39,6 +40,20 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      this.push.register().then((t: PushToken) => {
+        alert(t.token);
+        console.log(t.token);
+        return this.push.saveToken(t);
+      }).then((t: PushToken) => {
+        console.log('Token saved:', t.token);
+      });
+
+      this.push.rx.notification()
+        .subscribe((msg) => {
+          this.numberOfDeliveredRequests++;
+        });
+
       StatusBar.styleDefault();
       StatusBar.overlaysWebView(false); // for ios overlapping
 
@@ -53,6 +68,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    this.numberOfDeliveredRequests = 0;
     this.nav.setRoot(page);
   }
 
