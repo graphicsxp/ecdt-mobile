@@ -21,7 +21,7 @@ export class SignupComponent {
     register() {
 
         this.showLoader();
-        
+
         this._auth.signup({ 'name': this.name, 'email': this.email, 'password': this.password }).then(() => {
             return this._auth.login('basic', { 'email': this.email, 'password': this.password }).then(() => {
                 this.loading.dismiss();
