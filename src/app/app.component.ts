@@ -22,7 +22,7 @@ export class MyApp {
   reportingComponent = ReportingComponent;
   numberOfDeliveredRequests: number = 0;
 
-  constructor(public platform: Platform, private _auth: Auth, private _user: User, private _alertController: AlertController, public push: Push) {
+  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push) {
     this.initializeApp();
 
     let menu: any;
@@ -42,8 +42,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       this.push.register().then((t: PushToken) => {
-        alert(t.token);
-        console.log(t.token);
         return this.push.saveToken(t);
       }).then((t: PushToken) => {
         console.log('Token saved:', t.token);

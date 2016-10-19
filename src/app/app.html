@@ -13,20 +13,11 @@
     <ion-list>
       <ion-item menuClose (click)="openPage(requestListComponent)">
         Delivered requests
-        <ion-badge item-right item>{{numberOfDeliveredRequests}}</ion-badge>
+        <ion-badge *ngIf="numberOfDeliveredRequests > 0" item-right item>{{numberOfDeliveredRequests}}</ion-badge>
       </ion-item>
-      <ion-item menuClose (click)="openPage(reportingComponent)" *ngIf="numberOfDeliveredRequests > 0">
+      <ion-item menuClose (click)="openPage(reportingComponent)">
         Reporting
       </ion-item>
-      <!--<ion-item menuClose (click)="openPage(orderFormListComponent)">
-				Order Forms
-				<ion-note item-right item>2</ion-note>
-			</ion-item>-->
-      <!--<ion-item style="position: absolute; bottom: 0px; width: 100%">
-				<div style="text-align: center">
-					<a menuClose (click)="logout()">Logout</a>
-				</div>
-			</ion-item>-->
     </ion-list>
     <div style="position: absolute; bottom: 40px; width: 100%">
       <div style="text-align: center">
