@@ -6,10 +6,6 @@ import { SignupComponent } from '../signup/signup.component';
 
 import { Auth, User } from '@ionic/cloud-angular';
 
-
-declare var FingerprintAuth: any;
-declare var plugins: any;
-
 @Component({
   selector: 'login-page',
   templateUrl: './login.component.html',
@@ -24,14 +20,21 @@ export class LoginComponent {
   errorMessage: string;
   loading: any;
 
-  constructor(private _platform: Platform, private _loadingController: LoadingController, private _navController: NavController, private _auth: Auth, private _user: User) { }
+  constructor(private _platform: Platform,
+    private _loadingController: LoadingController,
+    private _navController: NavController,
+    private _auth: Auth,
+    private _user: User) { }
 
   ionViewDidLoad() {
     if (this._auth.isAuthenticated()) {
+      console.log('user is already authenticated');
       if (this._platform.is('android')) {
+        console.log('platform is android');
         this.showFingerprintAndroid();
       }
       else if (this._platform.is('ios')) {
+        console.log('platform is ios');
         this.showFingerprintIos();
       }
     }

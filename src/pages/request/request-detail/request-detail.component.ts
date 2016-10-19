@@ -4,8 +4,6 @@ import { NavParams, ViewController } from 'ionic-angular';
 import { RequestService } from '../service/request.service';
 import { Vibration, Transfer, FileOpener } from 'ionic-native';
 
-declare var cordova: any;
-
 @Component({
     selector: 'request-detail',
     templateUrl: './request-detail.component.html',
@@ -37,8 +35,6 @@ export class RequestDetailComponent implements OnInit {
         console.log('clicking on icon');
 
         let fileTransfer: Transfer = new Transfer();
-        // // var cordova: any;
-        // // const fs:string = cordova.file.dataDirectory;
         let targetPath = `${cordova.file.externalDataDirectory} ${this.myRequest.id}-${job.sourceLanguage}-${job.targetLanguage}`;
 
         fileTransfer.download(job.deliveryUrl, targetPath).then((res) => {
