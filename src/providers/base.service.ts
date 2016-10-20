@@ -10,7 +10,7 @@ export interface IBase {
 }
 
 @Injectable()
-export class BaseService<T extends IBase> {
+export abstract class BaseService<T extends IBase> {
   private _loadingService: LoadingService;
   public serviceUrl
   constructor(private _http: Http, @Inject(LoadingService) loadingService: LoadingService) {

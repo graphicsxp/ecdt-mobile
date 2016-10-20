@@ -7,7 +7,7 @@ import { LoadingService } from '../../shared/service/loading-service';
 export class ReportingService {
     private _simpleChartUrl = './build/simple-chart.json';
     private _stackedChartUrl = './build/stacked-chart.json';
-    
+
     private _loadingService: LoadingService;
 
     constructor(private _http: Http, @Inject(LoadingService) loadingService: LoadingService) {

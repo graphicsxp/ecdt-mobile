@@ -15,7 +15,7 @@ import { SignupComponent } from '../pages/signup/signup.component';
 
 import { HeaderComponent } from '../pages/shared/component/header.component';
 
-import { BaseService } from '../providers/base.service';
+import { RequestService } from '../pages/request/service/request-service';
 import { LoadingService } from '../pages/shared/service/loading-service';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -72,6 +72,6 @@ const cloudSettings: CloudSettings = {
     LoginComponent,
     SignupComponent
   ],
-  providers: [LoadingService, BaseService]
+  providers: [LoadingService, RequestService]
 })
 export class AppModule { }

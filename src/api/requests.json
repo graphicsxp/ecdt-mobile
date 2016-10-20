@@ -56,7 +56,7 @@
                 "sourceLanguage": "EN",
                 "targetLanguage": "DE",
                 "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
-                "price": "126.00"                
+                "price": "126.00"
             },
             {
                 "id": 3,
@@ -64,7 +64,7 @@
                 "sourceLanguage": "EN",
                 "targetLanguage": "NO",
                 "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
-                "price": "96.00" 
+                "price": "96.00"
             },
             {
                 "id": 1,
@@ -72,7 +72,7 @@
                 "sourceLanguage": "FR",
                 "targetLanguage": "ES",
                 "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
-                "price": "246.00" 
+                "price": "246.00"
             },
             {
                 "id": 2,
@@ -80,7 +80,7 @@
                 "sourceLanguage": "FR",
                 "targetLanguage": "DE",
                 "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
-                "price": "57.00" 
+                "price": "57.00"
             },
             {
                 "id": 3,
@@ -88,7 +88,7 @@
                 "sourceLanguage": "FR",
                 "targetLanguage": "NO",
                 "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
-                "price": "12.00" 
+                "price": "12.00"
             }
         ]
     }
