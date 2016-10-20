@@ -35,7 +35,13 @@ export class RequestDetailComponent implements OnInit {
         console.log('clicking on icon');
 
         let fileTransfer: Transfer = new Transfer();
+<<<<<<< HEAD
         let targetPath = `${cordova.file.externalDataDirectory} ${this.myRequest.id}-${job.sourceLanguage}-${job.targetLanguage}`;
+=======
+        // // var cordova: any;
+        // // const fs:string = cordova.file.dataDirectory;
+        let targetPath = `${cordova.file.dataDirectory} ${this.myRequest.id}-${job.sourceLanguage}-${job.targetLanguage}`;
+>>>>>>> dc2022684ab8a9ab908b1016a0f07fce23a53e92
 
         fileTransfer.download(job.deliveryUrl, targetPath).then((res) => {
             console.log('the file was downloaded successfully:' + res);
