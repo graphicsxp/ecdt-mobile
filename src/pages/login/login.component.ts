@@ -6,6 +6,9 @@ import { SignupComponent } from '../signup/signup.component';
 
 import { Auth, User } from '@ionic/cloud-angular';
 
+declare var FingerprintAuth: any;
+declare var plugins: any;
+
 @Component({
   selector: 'login-page',
   templateUrl: './login.component.html',
@@ -49,10 +52,10 @@ export class LoginComponent {
       this.loading.dismiss();
       alert('Authentication failed.');
     });
-
   }
 
   showFingerprintAndroid() {
+    console.log('fingerprint authentication started');
     var token = this._auth.getToken();
     var clientId = this._user.id;
     var navController = this._navController;
@@ -69,6 +72,7 @@ export class LoginComponent {
               navController.setRoot(RequestListComponent);
             } else if (result.withPassword) {
               console.log("Authenticated with backup password");
+              navController.setRoot(RequestListComponent);
             }
           }, function (error) {
             console.log(error); // "Fingerprint authentication not available"

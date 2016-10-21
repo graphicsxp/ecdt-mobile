@@ -13,5 +13,6 @@
 */
 declare module '*';
 
-declare var FingerprintAuth: any;
-declare var plugins: any;
+ //declare var FingerprintAuth: any;
+// declare var plugins: any;
+

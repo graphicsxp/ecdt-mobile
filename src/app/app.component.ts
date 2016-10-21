@@ -7,6 +7,7 @@ import { RequestListComponent } from '../pages/request/request-list/request-list
 import { LoginComponent } from '../pages/login/login.component';
 import { Auth, User } from '@ionic/cloud-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
+import { AppVersion } from 'ionic-native';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,6 +22,12 @@ export class MyApp {
   requestListComponent = RequestListComponent;
   reportingComponent = ReportingComponent;
   numberOfDeliveredRequests: number = 0;
+  app: any = {
+    name: '',
+    versionCode: '',
+    versionNumber: '',
+    packageName: ''
+  };
 
   constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push) {
     this.initializeApp();
@@ -34,6 +41,11 @@ export class MyApp {
     }
 
     this.username = this._user.details.username;
+
+    AppVersion.getAppName().then(v => this.app['name'] = v);
+    AppVersion.getVersionCode().then(v => this.app['versionCode'] = v);
+    AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
+    AppVersion.getPackageName().then(v => this.app['versionCode'] = v);
   }
 
   initializeApp() {

@@ -4,6 +4,8 @@ import { NavParams, ViewController } from 'ionic-angular';
 import { RequestService } from '../service/request.service';
 import { Vibration, Transfer, FileOpener } from 'ionic-native';
 
+declare var cordova: any;
+
 @Component({
     selector: 'request-detail',
     templateUrl: './request-detail.component.html',
