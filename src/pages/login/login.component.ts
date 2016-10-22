@@ -1,4 +1,4 @@
-import { NavController, LoadingController, Platform } from 'ionic-angular';
+import { NavController, LoadingController, MenuController, Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { LoginService } from '../shared/service/login-service';
 import { RequestListComponent } from '../request/request-list/request-list.component'
@@ -26,10 +26,12 @@ export class LoginComponent {
   constructor(private _platform: Platform,
     private _loadingController: LoadingController,
     private _navController: NavController,
+    private _menuController: MenuController,
     private _auth: Auth,
     private _user: User) { }
 
   ionViewDidLoad() {
+    this._menuController.enable(false);
     if (this._auth.isAuthenticated()) {
       console.log('user is already authenticated');
       if (this._platform.is('android')) {
@@ -41,6 +43,10 @@ export class LoginComponent {
         this.showFingerprintIos();
       }
     }
+  }
+
+  ionViewDidLeave(){
+      this._menuController.enable(true);
   }
 
   login() {
