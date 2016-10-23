@@ -28,22 +28,23 @@ export class LoginComponent {
     private _navController: NavController,
     private _menuController: MenuController,
     private _auth: Auth,
-    private _user: User) {}
+    private _user: User) {
+      this._platform.ready().then(() => {
+        if (this._auth.isAuthenticated()) {
+          console.log('user is already authenticated');
+          if (this._platform.is('android')) {
+            console.log('platform is android');
+            this.showFingerprintAndroid();
+          } else if (this._platform.is('ios')) {
+            console.log('platform is ios');
+            this.showFingerprintIos();
+          }
+        }
+      });
+    }
 
   ionViewDidLoad() {
-    this._platform.ready().then(() => {
-      this._menuController.enable(false);
-      if (this._auth.isAuthenticated()) {
-        console.log('user is already authenticated');
-        if (this._platform.is('android')) {
-          console.log('platform is android');
-          this.showFingerprintAndroid();
-        } else if (this._platform.is('ios')) {
-          console.log('platform is ios');
-          this.showFingerprintIos();
-        }
-      }
-    })
+    this._menuController.enable(false);
   }
 
   ionViewDidLeave() {
