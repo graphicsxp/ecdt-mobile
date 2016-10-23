@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../shared/service/login-service';
 import { RequestListComponent } from '../request/request-list/request-list.component'
 import { SignupComponent } from '../signup/signup.component';
-
+import { TouchID } from 'ionic-native';
 import { Auth, User } from '@ionic/cloud-angular';
 
 declare var FingerprintAuth: any;
@@ -28,30 +28,34 @@ export class LoginComponent {
     private _navController: NavController,
     private _menuController: MenuController,
     private _auth: Auth,
-    private _user: User) { }
+    private _user: User) {}
 
   ionViewDidLoad() {
-    this._menuController.enable(false);
-    if (this._auth.isAuthenticated()) {
-      console.log('user is already authenticated');
-      if (this._platform.is('android')) {
-        console.log('platform is android');
-        this.showFingerprintAndroid();
+    this._platform.ready().then(() => {
+      this._menuController.enable(false);
+      if (this._auth.isAuthenticated()) {
+        console.log('user is already authenticated');
+        if (this._platform.is('android')) {
+          console.log('platform is android');
+          this.showFingerprintAndroid();
+        } else if (this._platform.is('ios')) {
+          console.log('platform is ios');
+          this.showFingerprintIos();
+        }
       }
-      else if (this._platform.is('ios')) {
-        console.log('platform is ios');
-        this.showFingerprintIos();
-      }
-    }
+    })
   }
 
-  ionViewDidLeave(){
-      this._menuController.enable(true);
+  ionViewDidLeave() {
+    this._menuController.enable(true);
   }
 
   login() {
     this.showLoader();
-    this._auth.login("basic", { 'email': this.email, 'password': this.password }).then((res) => {
+    this._auth.login("basic", {
+      'email': this.email,
+      'password': this.password
+    }).then((res) => {
       this.loading.dismiss();
       this._navController.setRoot(RequestListComponent);
     }, (err) => {
@@ -61,7 +65,7 @@ export class LoginComponent {
   }
 
   showFingerprintAndroid() {
-    console.log('fingerprint authentication started');
+    console.log('fingerprint android authentication started');
     var token = this._auth.getToken();
     var clientId = this._user.id;
     var navController = this._navController;
@@ -93,25 +97,23 @@ export class LoginComponent {
   }
 
   showFingerprintIos() {
+    console.log('fingerprint ios authentication started');
     var navController = this._navController;
-
-    plugins.touchid.isAvailable(
-      function () {
-        plugins.touchid.verifyFingerprint(
-          'Scan your fingerprint please', // this will be shown in the native scanner popup
-          function (msg) {
-            console.log('ok: ' + msg);
-            navController.setRoot(RequestListComponent);
-          }, // success handler: fingerprint accepted
-          function (msg) {
-            alert('Something is wrong: ' + JSON.stringify(msg));
-          } // error handler with errorcode and localised reason
-        );
-      },
-      function (msg) {
-        console.log('touchid not available: ' + msg);
-      }
-    );
+    console.log(TouchID);
+    TouchID.isAvailable()
+      .then(
+        res => {
+          TouchID.verifyFingerprint('Scan your fingerprint please')
+            .then(
+              res => {
+                console.log('ok: ' + res);
+                navController.setRoot(RequestListComponent);
+              },
+              err => alert('Something is wrong: ' + JSON.stringify(err))
+            );
+        },
+        err => console.log('touchid not available: ' + err)
+      );
   }
 
   showLoader() {
