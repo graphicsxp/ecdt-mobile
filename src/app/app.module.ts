@@ -10,6 +10,8 @@ import { SimpleChartComponent } from '../pages/reporting/simpleChart/simple-char
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
 import { RequestDetailComponent } from '../pages/request/request-detail/request-detail.component';
 
+import { SettingsComponent } from '../pages/settings/settings.component';
+
 import { LoginComponent } from '../pages/login/login.component';
 import { SignupComponent } from '../pages/signup/signup.component';
 
@@ -55,7 +57,8 @@ const cloudSettings: CloudSettings = {
     RequestListComponent,
     LoginComponent,
     SignupComponent,
-    HeaderComponent
+    HeaderComponent,
+    SettingsComponent
   ],
   imports: [
     ChartsModule,
@@ -71,7 +74,8 @@ const cloudSettings: CloudSettings = {
     RequestDetailComponent,
     RequestListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SettingsComponent
   ],
   providers: [LoadingService, RequestService, NetworkAvailabilityService]
 })

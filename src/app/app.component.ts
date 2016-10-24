@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
+import { SettingsComponent } from '../pages/settings/settings.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { Auth, User } from '@ionic/cloud-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
@@ -21,6 +22,8 @@ export class MyApp {
   username: string;
   requestListComponent = RequestListComponent;
   reportingComponent = ReportingComponent;
+  settingsComponent = SettingsComponent;
+
   numberOfDeliveredRequests: number = 0;
   app: any = {
     name: '',
@@ -78,7 +81,10 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.numberOfDeliveredRequests = 0;
+    if (page == this.requestListComponent) {
+      this.numberOfDeliveredRequests = 0;
+    }
+
     this.nav.setRoot(page);
   }
 

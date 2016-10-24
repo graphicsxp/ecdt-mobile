@@ -1,15 +1,15 @@
 <ion-header  class="opaque">
-	<ion-toolbar>
+	<ion-navbar>
 		<ion-title *ngIf="myRequest">
 			Request {{myRequest.requestIdentifier}}
 		</ion-title>
-		<ion-buttons start>
+		<!--<ion-buttons start>
 			<button (click)="dismiss()">
 			<span primary showWhen="ios">Back to list</span>
 			<ion-icon name="md-close" showWhen="android,windows"></ion-icon>
 			</button>
-		</ion-buttons>
-	</ion-toolbar>
+		</ion-buttons>-->
+	</ion-navbar>
 </ion-header>
 
 <ion-content *ngIf="myRequest" fullscreen>
