@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 
 import { Insomnia, NativeStorage } from 'ionic-native';
 
@@ -11,15 +11,14 @@ export class SettingsComponent {
 
   public keepAwake: boolean = false;
 
-  constructor(public navCtrl: NavController) { }
-
-  ionViewDidLoad() {
-    console.log('Hello Settings Page');
-
-    NativeStorage.getItem("keepAwake").then(
-      data => this.keepAwake =data,
-      error => console.log('error retrieving keepAwake from native storage')
-    );
+  constructor(public navCtrl: NavController, private _platform: Platform) {
+    this._platform.ready().then(()=>{
+        console.log('Hello Settings Page');
+            NativeStorage.getItem("keepAwake").then(
+              data => this.keepAwake =data,
+              error => console.log('error retrieving keepAwake from native storage')
+            );
+    });
   }
 
   onKeepAwake(): void {
