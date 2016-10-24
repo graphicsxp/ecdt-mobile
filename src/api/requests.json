@@ -16,7 +16,7 @@
                 "volume": 15,
                 "sourceLanguage": "EN",
                 "targetLanguage": "FR",
-                "deliveryUrl": "",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "41.00"
             },
             {
@@ -24,7 +24,7 @@
                 "volume": 21,
                 "sourceLanguage": "EN",
                 "targetLanguage": "DE",
-                "deliveryUrl": "",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "85.00"
             }
         ]
@@ -47,7 +47,7 @@
                 "volume": 15,
                 "sourceLanguage": "EN",
                 "targetLanguage": "ES",
-                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "145.00"
             },
             {
@@ -55,7 +55,7 @@
                 "volume": 21,
                 "sourceLanguage": "EN",
                 "targetLanguage": "DE",
-                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "126.00"
             },
             {
@@ -63,7 +63,7 @@
                 "volume": 5,
                 "sourceLanguage": "EN",
                 "targetLanguage": "NO",
-                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "96.00"
             },
             {
@@ -71,7 +71,7 @@
                 "volume": 15,
                 "sourceLanguage": "FR",
                 "targetLanguage": "ES",
-                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "246.00"
             },
             {
@@ -79,7 +79,7 @@
                 "volume": 21,
                 "sourceLanguage": "FR",
                 "targetLanguage": "DE",
-                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "57.00"
             },
             {
@@ -87,7 +87,7 @@
                 "volume": 5,
                 "sourceLanguage": "FR",
                 "targetLanguage": "NO",
-                "deliveryUrl": "http://www.sam-dev.net/wp-content/uploads/doc.pdf",
+                "deliveryUrl": "https://www.dropbox.com/s/ufwnh6blysk9zpx/order-form-06053.pdf?dl=1",
                 "price": "12.00"
             }
         ]
