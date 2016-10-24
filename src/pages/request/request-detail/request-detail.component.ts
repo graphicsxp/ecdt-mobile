@@ -37,7 +37,7 @@ export class RequestDetailComponent implements OnInit {
         console.log('clicking on icon');
 
         let fileTransfer: Transfer = new Transfer();
-        let targetPath = `${cordova.file.dataDirectory} ${this.myRequest.id}-${job.sourceLanguage}-${job.targetLanguage}`;
+        let targetPath = `${cordova.file.externalDataDirectory} ${this.myRequest.id}-${job.sourceLanguage}-${job.targetLanguage}`;
 
         fileTransfer.download(job.deliveryUrl, targetPath).then((res) => {
             console.log('the file was downloaded successfully:' + res);
