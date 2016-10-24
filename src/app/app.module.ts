@@ -19,6 +19,7 @@ import { HeaderComponent } from '../pages/shared/component/header.component';
 
 import { RequestService } from '../pages/request/service/request.service';
 import { LoadingService } from '../pages/shared/service/loading-service';
+import { NetworkAvailabilityService } from '../pages/shared/service/networkAvailability-service';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 //import { ChartsModule } from '@progress/kendo-angular-charts';
@@ -76,6 +77,6 @@ const cloudSettings: CloudSettings = {
     SignupComponent,
     SettingsComponent
   ],
-  providers: [LoadingService, RequestService]
+  providers: [LoadingService, RequestService, NetworkAvailabilityService]
 })
 export class AppModule { }

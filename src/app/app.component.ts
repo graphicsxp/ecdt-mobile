@@ -45,16 +45,16 @@ export class MyApp {
 
     this.username = this._user.details.username;
 
-    AppVersion.getAppName().then(v => this.app['name'] = v);
-    AppVersion.getVersionCode().then(v => this.app['versionCode'] = v);
-    AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
-    AppVersion.getPackageName().then(v => this.app['versionCode'] = v);
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      AppVersion.getAppName().then(v => this.app['name'] = v);
+      AppVersion.getVersionCode().then(v => this.app['versionCode'] = v);
+      AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
+      AppVersion.getPackageName().then(v => this.app['versionCode'] = v);
 
       this.push.register().then((t: PushToken) => {
         return this.push.saveToken(t);

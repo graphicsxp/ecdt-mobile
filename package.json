@@ -61,8 +61,13 @@
     "cordova-plugin-badge",
     "cordova-plugin-file-transfer",
     "cordova-plugin-vibration",
+<<<<<<< HEAD
     "cordova-plugin-insomnia",
     "cordova-plugin-nativestorage"
+=======
+    "cordova-plugin-app-version",
+    "cordova-plugin-network-information"
+>>>>>>> a09c9f76dcc2778530a816fade72360746a28901
   ],
   "cordovaPlatforms": []
 }

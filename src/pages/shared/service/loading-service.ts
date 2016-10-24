@@ -1,12 +1,13 @@
-import {Injectable} from '@angular/core';
-import {LoadingController, Loading} from 'ionic-angular';
+import { Injectable } from '@angular/core';
+import { LoadingController, Loading } from 'ionic-angular';
 
 @Injectable()
 export class LoadingService {
 
   loading: Loading;
+  networkLoading: Loading;
 
-  constructor(private _loadingCtrl: LoadingController) { }
+  constructor(private _loadingCtrl: LoadingController) {}
 
   presentLoading() {
     this.loading = this._loadingCtrl.create({
@@ -19,5 +20,18 @@ export class LoadingService {
 
   hideLoading() {
     this.loading.dismiss();
+  }
+
+  presentNetworkNotAvailableLoading() {
+    this.networkLoading = this._loadingCtrl.create({
+      content: "Network not available",
+      spinner: 'hide',
+      dismissOnPageChange: false
+    });
+    this.networkLoading.present();
+  }
+
+  hideNetworkLoading() {
+    this.networkLoading.dismiss();
   }
 }
