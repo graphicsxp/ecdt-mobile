@@ -21,8 +21,8 @@ import { RequestService } from '../pages/request/service/request.service';
 import { LoadingService } from '../pages/shared/service/loading-service';
 import { NetworkAvailabilityService } from '../pages/shared/service/networkAvailability-service';
 
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-//import { ChartsModule } from '@progress/kendo-angular-charts';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from '@progress/kendo-angular-charts';
 
 
 import 'rxjs/Rx'; // load all features of reactive extensions
