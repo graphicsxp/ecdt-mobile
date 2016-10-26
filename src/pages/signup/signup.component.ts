@@ -1,52 +1,65 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from '@ionic/cloud-angular';
-import { RequestListComponent } from '../request/request-list/request-list.component'
-
+import { RequestListComponent } from '../request/request-list/request-list.component';
 
 @Component({
-    selector: 'signup-page',
-    templateUrl: './signup.component.html'
+  selector: 'signup-page',
+  templateUrl: './signup.component.html'
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
 
-    name: string;
-    role: string;
-    email: string;
-    password: string;
-    loading: any;
+  user: FormGroup;
+  name: string;
+  role: string;
+  email: string;
+  password: string;
+  loading: any;
 
-    constructor(private _navController: NavController, public loadingCtrl: LoadingController, private _auth: Auth) { }
+  constructor(private _navController: NavController, public loadingCtrl: LoadingController, private _auth: Auth) { }
 
-    register() {
+  ngOnInit() {
+    this.user = new FormGroup({
+      fullname: new FormControl('initial value', [Validators.required, Validators.minLength(2)]),
+      account: new FormGroup({
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+        confirm: new FormControl('', Validators.required)
+      })
+    });
+  }
 
-        this.showLoader();
+  register() {
+    console.log(this.user.value, this.user.valid);
 
-        this._auth.signup({ 'name': this.name, 'email': this.email, 'password': this.password }).then(() => {
-            return this._auth.login('basic', { 'email': this.email, 'password': this.password }).then(() => {
-                this.loading.dismiss();
+    this.showLoader();
 
-                this._navController.setRoot(RequestListComponent);
-            });
-        }, (err) => {
-            this.loading.dismiss();
+    this._auth.signup({ 'name': this.name, 'email': this.email, 'password': this.password }).then(() => {
+      return this._auth.login('basic', { 'email': this.email, 'password': this.password }).then(() => {
+        this.loading.dismiss();
 
-            for (let e of err.details) {
-                if (e === 'conflict_email') {
-                    alert('Email already exists.');
-                } else {
-                    //handle other errors
-                }
-            }
-        });
-    }
+        this._navController.setRoot(RequestListComponent);
+      });
+    }, (err) => {
+      this.loading.dismiss();
 
-    showLoader() {
+      for (let e of err.details) {
+        if (e === 'conflict_email') {
+          alert('Email already exists.');
+        } else {
+          //handle other errors
+        }
+      }
+    });
+  }
 
-        this.loading = this.loadingCtrl.create({
-            content: 'Authenticating...'
-        });
+  showLoader() {
 
-        this.loading.present();
-    }
+    this.loading = this.loadingCtrl.create({
+      content: 'Authenticating...'
+    });
+
+    this.loading.present();
+  }
 }

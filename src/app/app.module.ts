@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -62,6 +63,7 @@ const cloudSettings: CloudSettings = {
   ],
   imports: [
     ChartsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],
@@ -77,6 +79,6 @@ const cloudSettings: CloudSettings = {
     SignupComponent,
     SettingsComponent
   ],
-  providers: [LoadingService, RequestService, NetworkAvailabilityService]
+  providers: [LoadingService, RequestService/*, NetworkAvailabilityService*/]
 })
 export class AppModule { }

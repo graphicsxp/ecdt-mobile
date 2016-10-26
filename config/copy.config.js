@@ -42,7 +42,7 @@ module.exports = {
     // {
     //   src: 'node_modules/requirejs/require.js',
     //   dest: 'www/build/require.js'
-    // },   
+    // },
     {
       src: 'node_modules/chart.js/dist/Chart.js',
       dest: 'www/build/chart.js'

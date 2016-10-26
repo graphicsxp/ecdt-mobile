@@ -6,10 +6,10 @@ import { IUser } from '../model/user-model'
 @Injectable()
 export class LoginService {
     private _userUrl = 'build/api/users/users.json';
-    constructor(private _http: Http) { } 
+    constructor(private _http: Http) { }
 
     getUsers(): Observable<IUser[]> {
-        return this._http.get(this._userUrl) 
+        return this._http.get(this._userUrl)
             .map((response: Response) => <IUser[]>response.json())
             .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);
@@ -22,7 +22,7 @@ export class LoginService {
 
     login(username: string, password: string): Observable<IUser>{
         return this.getUsers()
-            .map((users: IUser[]) => users.find(p => p.username === username && p.password === password));
+            .map((users: IUser[]) => users.find(p => p.account.username === username && p.account.password === password));
     }
 
     private handleError(error: Response) {
