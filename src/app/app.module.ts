@@ -79,6 +79,6 @@ const cloudSettings: CloudSettings = {
     SignupComponent,
     SettingsComponent
   ],
-  providers: [LoadingService, RequestService/*, NetworkAvailabilityService*/]
+  providers: [LoadingService, RequestService, NetworkAvailabilityService]
 })
 export class AppModule { }
