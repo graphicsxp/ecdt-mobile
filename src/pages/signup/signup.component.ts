@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from '@ionic/cloud-angular';
 import { RequestListComponent } from '../request/request-list/request-list.component';
@@ -11,23 +11,28 @@ import { RequestListComponent } from '../request/request-list/request-list.compo
 export class SignupComponent implements OnInit {
 
   user: FormGroup;
-  name: string;
-  role: string;
-  email: string;
-  password: string;
   loading: any;
 
-  constructor(private _navController: NavController, public loadingCtrl: LoadingController, private _auth: Auth) { }
+  constructor(private _navController: NavController, public loadingCtrl: LoadingController, private _auth: Auth, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.user = new FormGroup({
-      fullname: new FormControl('initial value', [Validators.required, Validators.minLength(2)]),
-      account: new FormGroup({
-        email: new FormControl('', Validators.required),
-        password: new FormControl('', Validators.required),
-        confirm: new FormControl('', Validators.required)
+    this.user = this._formBuilder.group({
+      fullname: ['', [Validators.required, Validators.minLength(2)]],
+      account: this._formBuilder.group({
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        confirm: ['', Validators.required]
       })
-    });
+    })
+
+    // this.user = new FormGroup({
+    //   fullname: new FormControl('initial value', [Validators.required, Validators.minLength(2)]),
+    //   account: new FormGroup({
+    //     email: new FormControl('', Validators.required),
+    //     password: new FormControl('', Validators.required),
+    //     confirm: new FormControl('', Validators.required)
+    //   })
+    // });
   }
 
   register() {
@@ -35,8 +40,8 @@ export class SignupComponent implements OnInit {
 
     this.showLoader();
 
-    this._auth.signup({ 'name': this.name, 'email': this.email, 'password': this.password }).then(() => {
-      return this._auth.login('basic', { 'email': this.email, 'password': this.password }).then(() => {
+    this._auth.signup({ 'name': this.user.get('fullname').value, 'email': this.user.get('account').get('email').value, 'password': this.user.get('account').get('password').value }).then(() => {
+      return this._auth.login('basic', { 'email': this.user.get('account').get('email').value, 'password': this.user.get('account').get('password').value }).then(() => {
         this.loading.dismiss();
 
         this._navController.setRoot(RequestListComponent);
