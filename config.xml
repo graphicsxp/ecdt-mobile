@@ -72,7 +72,8 @@
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="FadeSplashScreen" value="true" />
-    <preference name="FadeSplashScreenDuration" value="400" />
+    <preference name="LoadUrlTimeoutValue" value="30000" />  
+    <preference name="FadeSplashScreenDuration" value="400" /> 
     <preference name="SplashScreenBackgroundColor" value="0xFFFFFFFF" />
     <preference name="SplashScreen" value="screen" />
     <feature name="StatusBar">

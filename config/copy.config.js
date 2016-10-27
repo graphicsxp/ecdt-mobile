@@ -4,48 +4,44 @@
 module.exports = {
   include: [
     {
-      src: 'src/assets/',
-      dest: 'www/assets/'
+      src: '{{SRC}}/assets/',
+      dest: '{{WWW}}/assets/'
     },
     {
-      src: 'src/index.html',
-      dest: 'www/index.html'
+      src: '{{SRC}}/index.html',
+      dest: '{{WWW}}/index.html'
     },
     {
-      src: 'src/service-worker.js',
-      dest: 'www/service-worker.js'
+      src: '{{SRC}}/service-worker.js',
+      dest: '{{WWW}}/service-worker.js'
     },
     {
       src: 'node_modules/ionic-angular/polyfills/polyfills.js',
-      dest: 'www/build/polyfills.js'
+      dest: '{{WWW}}/build/polyfills.js'
     },
     {
       src: 'node_modules/ionicons/dist/fonts/',
-      dest: 'www/assets/fonts/'
+      dest: '{{WWW}}/assets/fonts/'
     },
     {
-      src: 'src/api/orderForms.json',
-      dest: 'www/build/orderForms.json'
+      src: '{{SRC}}/api/orderForms.json',
+      dest: '{{WWW}}/build/orderForms.json'
     },
     {
-      src: 'src/api/reporting/stacked-chart.json',
-      dest: 'www/build/stacked-chart.json'
+      src: '{{SRC}}/api/reporting/stacked-chart.json',
+      dest: '{{WWW}}/build/stacked-chart.json'
     },
     {
-      src: 'src/api/reporting/simple-chart.json',
-      dest: 'www/build/simple-chart.json'
+      src: '{{SRC}}/api/reporting/simple-chart.json',
+      dest: '{{WWW}}/build/simple-chart.json'
     },
     {
-      src: 'src/api/requests.json',
-      dest: 'www/build/requests.json'
-    },
-    {
-      src: 'node_modules/chart.js/dist/Chart.js',
-      dest: 'www/build/chart.js'
+      src: '{{SRC}}/api/requests.json',
+      dest: '{{WWW}}/build/requests.json'
     },
     {
       src: 'node_modules/@telerik/kendo-theme-default/dist/all.css',
-      dest: 'www/build/telerik.css'
+      dest: '{{WWW}}/build/telerik.css'
     }
   ]
 };
