@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from '@ionic/cloud-angular';
 import { RequestListComponent } from '../request/request-list/request-list.component';
