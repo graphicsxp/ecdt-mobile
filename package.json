@@ -33,13 +33,10 @@
     "zone.js": "^0.6.21",
 
     "@progress/kendo-angular-charts": "0.7.1",
-    "@telerik/kendo-theme-default": "^1.26.1",
-    "angular2-highcharts": "^0.3.4",
-    "chart.js": "^2.3.0",
-    "ng2-charts": "^1.4.0"
+    "@telerik/kendo-theme-default": "^1.26.1"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "0.0.37",
+    "@ionic/app-scripts": "beta",
     "typescript": "^2.0.3"
   },
   "config": {
