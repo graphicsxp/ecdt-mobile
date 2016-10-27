@@ -13,12 +13,11 @@ function getEntryPoint() {
 }
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   entry: getEntryPoint(),
   output: {
     path: '{{BUILD}}',
     filename: 'main.js',
-    pathinfo:true
   },
 
   module: {
