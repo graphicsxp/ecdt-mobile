@@ -4,7 +4,7 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
-    "build": "ionic-app-scripts build",
+    "build": "ionic-app-scripts build --dev",
     "watch": "ionic-app-scripts watch",
     "serve:before": "watch",
     "emulate:before": "build",
@@ -36,7 +36,7 @@
     "@telerik/kendo-theme-default": "^1.26.1"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "beta",
+    "@ionic/app-scripts": "0.0.37",
     "typescript": "^2.0.3"
   },
   "config": {
