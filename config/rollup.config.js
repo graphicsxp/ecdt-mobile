@@ -44,7 +44,6 @@ var rollupConfig = {
         '@progress/kendo-angular-intl/dist/npm/js/cldr-intl.service': ['CldrIntlService'],
         '@progress/kendo-angular-popup/dist/npm/js/popup.module': ["PopupModule"],
         '@progress/kendo-angular-charts/dist/npm/js/charts.module': ['ChartsModule'],
-
         '@progress/kendo-angular-charts/dist/npm/js/common/theme.service': ['ThemeService'],
         '@progress/kendo-angular-charts/dist/npm/js/chart.component': ['ChartComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/common/tooltip-template.service': ['TooltipTemplateService'],
@@ -66,8 +65,7 @@ var rollupConfig = {
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/crosshair-tooltips-container.component': ['CrosshairTooltipsContainerComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/tooltip-popup.component': ['TooltipPopupComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/shared-tooltip-template.directive': ['SharedTooltipTemplateDirective'],        
-        '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/series-tooltip-template.directive': ['SeriesTooltipTemplateDirective'],        
-        
+        '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/series-tooltip-template.directive': ['SeriesTooltipTemplateDirective']        
       }
     }),
     nodeResolve({
