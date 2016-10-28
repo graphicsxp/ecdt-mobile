@@ -33,16 +33,16 @@
     "@telerik/kendo-theme-default": "^1.26.1"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "0.0.37",
+    "@ionic/app-scripts": "latest",
     "typescript": "^2.0.3"
   },
   "config": {
     "ionic_copy": "./config/copy.config.js",
-    "ionic_webpack": "./config/webpack.config.js",
+    "ionic_rollup": "./config/rollup.config.js",
     "ionic_sass": "./config/sass.config.js"
   },
   "description": "ecdt-mobile: An Ionic project",
-  "cordovaPlugins": [ 
+  "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
     "cordova-plugin-whitelist",
@@ -58,6 +58,6 @@
     "cordova-plugin-nativestorage",
     "cordova-plugin-app-version",
     "cordova-plugin-network-information"
-    ],
+  ],
   "cordovaPlatforms": []
 }
