@@ -14,4 +14,5 @@ export interface IRequest {
     numberOfJobs: number;
     deliveryDate: Date;
     jobs: IJob[];
+    isArchived: boolean;
 }

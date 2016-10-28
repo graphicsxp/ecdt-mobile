@@ -8,8 +8,7 @@ import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { StackedChartComponent } from '../pages/reporting/stackedChart/stacked-chart.component';
 import { SimpleChartComponent } from '../pages/reporting/simpleChart/simple-chart.component';
 
-import { RequestListComponent } from '../pages/request/request-list/request-list.component';
-import { RequestDetailComponent } from '../pages/request/request-detail/request-detail.component';
+import { RequestModule } from '../pages/request/request.module';
 
 import { SettingsComponent } from '../pages/settings/settings.component';
 
@@ -54,8 +53,6 @@ const cloudSettings: CloudSettings = {
     ReportingComponent,
     StackedChartComponent,
     SimpleChartComponent,
-    RequestDetailComponent,
-    RequestListComponent,
     LoginComponent,
     SignupComponent,
     HeaderComponent,
@@ -63,6 +60,7 @@ const cloudSettings: CloudSettings = {
   ],
   imports: [
     ChartsModule,
+    RequestModule,
     ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
@@ -73,8 +71,6 @@ const cloudSettings: CloudSettings = {
     ReportingComponent,
     StackedChartComponent,
     SimpleChartComponent,
-    RequestDetailComponent,
-    RequestListComponent,
     LoginComponent,
     SignupComponent,
     SettingsComponent

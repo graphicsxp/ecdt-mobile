@@ -10,6 +10,7 @@
         ],
         "requestIdentifier": "2016/000001",
         "deliveryDate": "2016-09-12T09:43:02.000",
+        "isArchived": true,
         "jobs": [
             {
                 "id": 1,
@@ -41,6 +42,7 @@
         ],
         "requestIdentifier": "2016/000002",
         "deliveryDate": "2016-09-11T10:31:02.000",
+        "isArchived": false,
         "jobs": [
             {
                 "id": 1,
