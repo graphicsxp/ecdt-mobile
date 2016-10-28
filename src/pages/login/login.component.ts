@@ -1,6 +1,5 @@
 import { NavController, LoadingController, MenuController, Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { LoginService } from '../shared/service/login-service';
 import { RequestListComponent } from '../request/request-list/request-list.component'
 import { SignupComponent } from '../signup/signup.component';
 import { TouchID } from 'ionic-native';
@@ -12,7 +11,7 @@ declare var plugins: any;
 @Component({
   selector: 'login-page',
   templateUrl: './login.component.html',
-  providers: [LoginService]
+  providers: []
 })
 export class LoginComponent {
   signingUp: boolean = true;

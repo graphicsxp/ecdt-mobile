@@ -4,26 +4,12 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
-import { ReportingComponent } from '../pages/reporting/reporting.component';
-import { StackedChartComponent } from '../pages/reporting/stackedChart/stacked-chart.component';
-import { SimpleChartComponent } from '../pages/reporting/simpleChart/simple-chart.component';
-
+import { SharedModule } from '../pages/shared/shared.module';
+import { SettingsModule } from '../pages/settings/settings.module';
 import { RequestModule } from '../pages/request/request.module';
-
-import { SettingsComponent } from '../pages/settings/settings.component';
-
-import { LoginComponent } from '../pages/login/login.component';
-import { SignupComponent } from '../pages/signup/signup.component';
-
-import { HeaderComponent } from '../pages/shared/component/header.component';
-
-import { RequestService } from '../pages/request/service/request.service';
-import { LoadingService } from '../pages/shared/service/loading-service';
-import { NetworkAvailabilityService } from '../pages/shared/service/networkAvailability-service';
-
-// import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { ChartsModule } from '@progress/kendo-angular-charts';
-
+import { LoginModule } from '../pages/login/login.module';
+import { ReportingModule } from '../pages/reporting/reporting.module';
+import { SignupModule} from '../pages/signup/signup.module';
 
 import 'rxjs/Rx'; // load all features of reactive extensions
 
@@ -49,32 +35,23 @@ const cloudSettings: CloudSettings = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    ReportingComponent,
-    StackedChartComponent,
-    SimpleChartComponent,
-    LoginComponent,
-    SignupComponent,
-    HeaderComponent,
-    SettingsComponent
+    MyApp
   ],
   imports: [
-    ChartsModule,
+    SharedModule,
     RequestModule,
+    SettingsModule,
+    LoginModule,
+    ReportingModule,
+    SignupModule,
     ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    ReportingComponent,
-    StackedChartComponent,
-    SimpleChartComponent,
-    LoginComponent,
-    SignupComponent,
-    SettingsComponent
+    MyApp
   ],
-  providers: [LoadingService, RequestService, NetworkAvailabilityService]
+  providers: []
 })
 export class AppModule { }

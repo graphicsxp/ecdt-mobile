@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { ReportingService } from './service/reporting-service';
-import { LoadingService } from '../shared/service/loading-service';
 
 @Component({
   selector: 'reporting',
   templateUrl: 'reporting.component.html',
-  providers: [ReportingService, LoadingService]
+  providers: [ReportingService]
 })
 export class ReportingComponent implements OnInit {
 

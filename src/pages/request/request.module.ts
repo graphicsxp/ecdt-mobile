@@ -6,11 +6,9 @@ import { RequestDetailComponent }   from './request-detail/request-detail.compon
 import { ShowArchivedPipe } from './filter/showArchived-pipe';
 
 @NgModule({
-    imports: [
-            IonicModule.forRoot(RequestListComponent),
-    ],
-    exports: [RequestDetailComponent],
-    entryComponents: [RequestDetailComponent],
+    imports: [IonicModule],
+    exports: [RequestListComponent, RequestDetailComponent],
+    entryComponents: [RequestListComponent, RequestDetailComponent],
     declarations: [RequestListComponent, RequestDetailComponent, ShowArchivedPipe],
     providers: [],
 })
