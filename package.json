@@ -30,7 +30,7 @@
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.21",
     "@progress/kendo-angular-charts": "0.7.4",
-    "@telerik/kendo-theme-default": "^1.26.1"
+    "@telerik/kendo-theme-default": "^1.28.1"
   },
   "devDependencies": {
     "@ionic/app-scripts": "latest",
