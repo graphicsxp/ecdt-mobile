@@ -11,8 +11,8 @@ import{SharedModule} from '../shared/shared.module';
   imports:[IonicModule, ChartsModule,SharedModule],  //no forRoot here
   providers:[ReportingService],
   declarations:[ReportingComponent, SimpleChartComponent, StackedChartComponent],
-  exports:[ReportingComponent, SimpleChartComponent, StackedChartComponent],
-  entryComponents:[ReportingComponent, SimpleChartComponent, StackedChartComponent]  //<-- add all your module components to here
+  exports:[ReportingComponent],
+  entryComponents:[ReportingComponent]  //<-- add all your module components to here
 })
 export class ReportingModule{
 
