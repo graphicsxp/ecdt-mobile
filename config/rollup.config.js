@@ -71,7 +71,8 @@ var rollupConfig = {
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/tooltip-popup.component': ['TooltipPopupComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/shared-tooltip-template.directive': ['SharedTooltipTemplateDirective'],        
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/series-tooltip-template.directive': ['SeriesTooltipTemplateDirective'],
-        '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.component': ['ResizeSensorComponent']     
+        '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.component': ['ResizeSensorComponent'],
+        '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.module': ['ResizeSensorModule']
       }
     }),
     nodeResolve({
