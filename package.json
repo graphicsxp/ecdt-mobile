@@ -15,25 +15,25 @@
   "dependencies": {
     "@ionic/cloud-angular": "0.7.0",
     "@ionic/storage": "1.1.6",
-    "ionic-angular": "2.0.0-rc.1",
+    "ionic-angular": "2.0.0-rc.2",
     "ionic-native": "2.2.6",
     "ionicons": "3.0.0",
-    "@angular/common": "2.1.0",
-    "@angular/compiler": "2.1.0",
-    "@angular/compiler-cli": "2.1.0",
-    "@angular/core": "2.1.0",
-    "@angular/forms": "2.1.0",
-    "@angular/http": "2.1.0",
-    "@angular/platform-browser": "2.1.0",
-    "@angular/platform-browser-dynamic": "2.1.0",
-    "@angular/platform-server": "2.1.0",
+    "@angular/common": "2.1.1",
+    "@angular/compiler": "2.1.1",
+    "@angular/compiler-cli": "2.1.1",
+    "@angular/core": "2.1.1",
+    "@angular/forms": "2.1.1",
+    "@angular/http": "2.1.1",
+    "@angular/platform-browser": "2.1.1",
+    "@angular/platform-browser-dynamic": "2.1.1",
+    "@angular/platform-server": "2.1.1",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.21",
     "@progress/kendo-angular-charts": "0.8.1",
-    "@telerik/kendo-theme-default": "^1.29.0"
+    "@telerik/kendo-theme-default": "^1.30.0"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "latest",
+    "@ionic/app-scripts": "0.0.39",
     "typescript": "^2.0.3"
   },
   "config": {
