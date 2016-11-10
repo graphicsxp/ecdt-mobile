@@ -1,4 +1,5 @@
 <kendo-chart>
+	<kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
 	<kendo-chart-value-axis>
 		<kendo-chart-value-axis-item [title]="{ text: model.valueAxis.name }" [min]="model.valueAxis.min" [max]="model.valueAxis.max">
 			  <kendo-chart-value-axis-item-crosshair [visible]="true">
@@ -18,7 +19,7 @@
 	</kendo-chart-category-axis>
 
 	<kendo-chart-series>
-		<kendo-chart-series-item  [data]="model.series" [type]="chartType">
+		<kendo-chart-series-item  [data]="model.series" [type]="chartType" name="volume">
 			<kendo-chart-series-item-tooltip>
           </kendo-chart-series-item-tooltip>
 		</kendo-chart-series-item>
