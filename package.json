@@ -33,7 +33,7 @@
     "@telerik/kendo-theme-default": "^1.30.0"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "0.0.39",
+    "@ionic/app-scripts": "0.0.43",
     "typescript": "^2.0.3"
   },
   "config": {
