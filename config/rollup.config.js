@@ -46,7 +46,6 @@ var rollupConfig = {
         '@progress/kendo-angular-charts/dist/npm/js/charts.module': ['ChartsModule'],
         '@progress/kendo-angular-charts/dist/npm/js/common/theme.service': ['ThemeService'],
         '@progress/kendo-angular-charts/dist/npm/js/chart.component': ['ChartComponent'],
-        '@progress/kendo-angular-charts/dist/npm/js/legend.component': ['LegendComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/common/tooltip-template.service': ['TooltipTemplateService'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/chart-auto-theme.component': ['ChartAutoThemeComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/common/configuration.service' :  ['ConfigurationService'],
@@ -73,7 +72,8 @@ var rollupConfig = {
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/shared-tooltip-template.directive': ['SharedTooltipTemplateDirective'],        
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/series-tooltip-template.directive': ['SeriesTooltipTemplateDirective'],
         '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.component': ['ResizeSensorComponent'],
-        '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.module': ['ResizeSensorModule']
+        '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.module': ['ResizeSensorModule'],
+        '@progress/kendo-angular-charts/dist/npm/js/chart/legend.component': ['LegendComponent']
       }
     }),
     nodeResolve({
