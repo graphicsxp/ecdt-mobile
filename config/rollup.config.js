@@ -46,6 +46,7 @@ var rollupConfig = {
         '@progress/kendo-angular-charts/dist/npm/js/charts.module': ['ChartsModule'],
         '@progress/kendo-angular-charts/dist/npm/js/common/theme.service': ['ThemeService'],
         '@progress/kendo-angular-charts/dist/npm/js/chart.component': ['ChartComponent'],
+        '@progress/kendo-angular-charts/dist/npm/js/legend.component': ['LegendComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/common/tooltip-template.service': ['TooltipTemplateService'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/chart-auto-theme.component': ['ChartAutoThemeComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/common/configuration.service' :  ['ConfigurationService'],
