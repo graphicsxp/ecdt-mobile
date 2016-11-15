@@ -27,8 +27,8 @@
 		</ion-list-header>
 		<ion-item-sliding #slidingItem *ngFor="let request of requests | showArchived: showArchived.checked" class="item item-icon-right"
 			(click)="itemSelected(request)">
-			<ion-item-options side="left">
-				<button ion-button (click)="markAsRead(request, slidingItem)">
+			<ion-item-options side="left" >
+				<button ion-button (click)="markAsRead(request, slidingItem)" *ngIf="!request.isArchived">
 					<ion-icon name="archive"></ion-icon>
 				</button>
 			</ion-item-options>
