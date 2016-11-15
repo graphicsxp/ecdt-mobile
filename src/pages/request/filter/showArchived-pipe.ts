@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'showArchived'
+    name: 'showArchived',
+    pure: false  //make the pipe impure so that data will refresh whenever there's a change
 })
 
 export class ShowArchivedPipe implements PipeTransform {

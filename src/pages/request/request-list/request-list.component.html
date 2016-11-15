@@ -10,17 +10,25 @@
 <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 
 <ion-content padding class="grid-basic-page" *ngIf="requests" fullscreen>
-	<div padding >
-		<span>Show archived ?</span> 
-		<ion-toggle style="float:left; margin-left: 10px" checked="false" #showArchived ></ion-toggle>
-	</div>
+	<ion-refresher (ionRefresh)="refreshAll($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<ion-card>
+		<ion-card-content>
+			<ion-item>
+				<ion-label>show archived ?</ion-label>
+				<ion-toggle checked="false" #showArchived></ion-toggle>
+			</ion-item>
+		</ion-card-content>
+	</ion-card>
 	<ion-list>
 		<ion-list-header>
 			{{requests.length }} requests were delivered
 		</ion-list-header>
-		<ion-item-sliding #slidingItem *ngFor="let request of requests | showArchived: showArchived.checked" class="item item-icon-right" (click)="itemSelected(request)">
+		<ion-item-sliding #slidingItem *ngFor="let request of requests | showArchived: showArchived.checked" class="item item-icon-right"
+			(click)="itemSelected(request)">
 			<ion-item-options side="left">
-				<button ion-button (click)="markAsRead(item, slidingItem)">
+				<button ion-button (click)="markAsRead(request, slidingItem)">
 					<ion-icon name="archive"></ion-icon>
 				</button>
 			</ion-item-options>
@@ -31,6 +39,7 @@
 							<ion-badge>{{request.jobs.length}} jobs</ion-badge>
 						</ion-col>
 						<ion-col>
+							<h3>{{request.requestIdentifier}}</h3>
 							<p> delivered on {{request.deliveryDate | date:'d/M/yyyy'}} at {{request.deliveryDate | date:'shortTime'}}</p>
 							<p>
 								<ion-note>Source language(s): {{request.sourceLanguages}}</ion-note>
