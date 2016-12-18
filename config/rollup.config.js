@@ -13,13 +13,13 @@ var rollupConfig = {
    * be included, along with the minimum necessary code
    * from its dependencies
    */
-  entry: 'src/app/main.dev.ts',
+  entry: process.env.IONIC_APP_ENTRY_POINT,
 
   /**
    * sourceMap: If true, a separate sourcemap file will
    * be created.
    */
-  sourceMap: true,
+  sourceMap: process.env.IONIC_GENERATE_SOURCE_MAP ? true : false,
 
   /**
    * format: The format of the generated bundle
@@ -29,7 +29,7 @@ var rollupConfig = {
   /**
    * dest: the output filename for the bundle in the buildDir
    */
-  dest: 'main.js',
+  dest: process.env.IONIC_OUTPUT_JS_FILE_NAME,
 
   /**
    * plugins: Array of plugin objects, or a single plugin object.
@@ -37,7 +37,7 @@ var rollupConfig = {
    */
   plugins: [
     builtins(),
-    commonjs({
+        commonjs({
       namedExports: {
         '@progress/kendo-angular-charts': ['ChartsModule'],
         '@progress/kendo-angular-intl/dist/npm/js/intl.service': ['IntlService'],
@@ -84,17 +84,8 @@ var rollupConfig = {
       extensions: ['.js']
     }),
     globals(),
-    json()
+    json(),
+    
   ]
 
 };
-
-
-if (process.env.IONIC_ENV == 'prod') {
-  // production mode
-  rollupConfig.entry = '{{TMP}}/app/main.prod.ts';
-  rollupConfig.sourceMap = false;
-}
-
-
-module.exports = rollupConfig;

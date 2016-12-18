@@ -8,7 +8,7 @@ module.exports = {
    * from the sass build. The directory which it is saved in
    * is set within the "buildDir" config options.
    */
-  outputFilename: 'main.css',
+  outputFilename: process.env.IONIC_OUTPUT_CSS_FILE_NAME,
 
   /**
    * sourceMap: If source map should be built or not.
@@ -42,7 +42,8 @@ module.exports = {
    */
   includePaths: [
     'node_modules/ionic-angular/themes',
-    'node_modules/ionicons/dist/scss'
+    'node_modules/ionicons/dist/scss',
+    'node_modules/ionic-angular/fonts'
   ],
 
   /**
@@ -70,7 +71,7 @@ module.exports = {
    * to be imported so their values override default variables.
    */
   variableSassFiles: [
-    'src/theme/variables.scss'
+    '{{SRC}}/theme/variables.scss'
   ],
 
   /**

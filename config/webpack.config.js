@@ -1,52 +1,38 @@
 var path = require('path');
 var webpack = require('webpack');
-
-// for prod builds, we have already done AoT and AoT writes to disk
-// so read the JS file from disk
-// for dev buids, we actually want to pass in .ts files since we
-// don't have .js files on disk, they're exclusively in memory
-
-function getEntryPoint() {
-  if (process.env.IONIC_ENV === 'prod') {
-    return '{{TMP}}/app/main.prod.js';
-  }
-  return '{{TMP}}/app/main.dev.js';
-}
-
-function getPlugins() {
-  if (process.env.IONIC_ENV === 'prod') {
-    return [
-      // This helps ensure the builds are consistent if source hasn't changed:
-      new webpack.optimize.OccurrenceOrderPlugin(),
-      // Try to dedupe duplicated modules, if any:
-      // Add this back in when Angular fixes the issue: https://github.com/angular/angular-cli/issues/1587
-      //new DedupePlugin()
-    ];
-  }
-  return [];
-}
+var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
 module.exports = {
-  entry: getEntryPoint(),
+  entry: process.env.IONIC_APP_ENTRY_POINT,
   output: {
     path: '{{BUILD}}',
-    filename: 'main.js'
+    filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
+    devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
   },
+  devtool: process.env.IONIC_GENERATE_SOURCE_MAP ? process.env.IONIC_SOURCE_MAP_TYPE : '',
 
   resolve: {
-    extensions: ['.js', '.json']
+    extensions: ['.ts', '.js', '.json'],
+    modules: [path.resolve('node_modules')]
   },
 
   module: {
     loaders: [
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
+      },
+      {
+        //test: /\.(ts|ngfactory.js)$/,
+        test: /\.ts$/,
+        loader: process.env.IONIC_WEBPACK_LOADER
       }
     ]
   },
 
-  plugins: getPlugins(),
+  plugins: [
+    ionicWebpackFactory.getIonicEnvironmentPlugin()
+  ],
 
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

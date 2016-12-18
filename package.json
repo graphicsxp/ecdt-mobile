@@ -4,7 +4,7 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
-    "build": "ionic-app-scripts build",
+    "build": "ionic-app-scripts build --prod",
     "watch": "ionic-app-scripts watch",
     "serve:before": "watch",
     "emulate:before": "build",
@@ -13,31 +13,34 @@
     "run:before": "build"
   },
   "dependencies": {
-    "@ionic/cloud-angular": "0.7.0",
-    "@ionic/storage": "1.1.6",
-    "ionic-angular": "2.0.0-rc.2",
-    "ionic-native": "2.2.6",
+    "@angular/common": "2.2.1",
+    "@angular/compiler": "2.2.1",
+    "@angular/compiler-cli": "2.2.1",
+    "@angular/core": "2.2.1",
+    "@angular/forms": "2.2.1",
+    "@angular/http": "2.2.1",
+    "@angular/platform-browser": "2.2.1",
+    "@angular/platform-browser-dynamic": "2.2.1",
+    "@angular/platform-server": "2.2.1",
+    "@ionic/storage": "1.1.7",
+    "ionic-angular": "2.0.0-rc.4",
+    "ionic-native": "2.2.12",
     "ionicons": "3.0.0",
-    "@angular/common": "2.1.1",
-    "@angular/compiler": "2.1.1",
-    "@angular/compiler-cli": "2.1.1",
-    "@angular/core": "2.1.1",
-    "@angular/forms": "2.1.1",
-    "@angular/http": "2.1.1",
-    "@angular/platform-browser": "2.1.1",
-    "@angular/platform-browser-dynamic": "2.1.1",
-    "@angular/platform-server": "2.1.1",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.21",
-    "@progress/kendo-angular-charts": "0.8.2",
-    "@telerik/kendo-theme-default": "^1.30.0"
+    "zone.js": "0.6.26",
+
+    "@ionic/cloud-angular": "0.7.0",
+    "@progress/kendo-angular-charts": "0.10.4",
+    "@telerik/kendo-theme-default": "^1.31.0"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "0.0.39",
-    "typescript": "^2.0.3"
+    "@ionic/app-scripts": "nightly",
+    "typescript": "2.0.9"
   },
   "config": {
+    "ionic_bundler": "webpack",
     "ionic_copy": "./config/copy.config.js",
+    "ionic_webpack": "./config/webpack.config.js",
     "ionic_rollup": "./config/rollup.config.js",
     "ionic_sass": "./config/sass.config.js"
   },

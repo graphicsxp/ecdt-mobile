@@ -14,21 +14,21 @@ export class NetworkAvailabilityService {
       this._connected = this.networkAvailable();
       console.log('subscribing to network events');
       this._disconnectSubscription = Network.onDisconnect().subscribe(() => {
-        console.log('network disconnected:' + Network.connection);
+        console.log('network disconnected:' + Network.type);
         setTimeout(() => {
-          if (Network.connection === 'none' && this._connected === true) {
+          if (Network.type === 'none' && this._connected === true) {
             this._connected = false;
-            console.log('network disconnected handled:' + Network.connection);
+            console.log('network disconnected handled:' + Network.type);
             loadingService.presentNetworkNotAvailableLoading();
           }
         }, 1500);
       });
       this._connectSubscription = Network.onConnect().subscribe(() => {
-        console.log('network connected:' + Network.connection);
+        console.log('network connected:' + Network.type);
         setTimeout(() => {
-          if (Network.connection !== 'none' && this._connected === false) {
+          if (Network.type !== 'none' && this._connected === false) {
             this._connected = true;
-            console.log('network connected handled:' + Network.connection);
+            console.log('network connected handled:' + Network.type);
             loadingService.hideNetworkLoading();
           }
         }, 1500);
@@ -43,6 +43,6 @@ export class NetworkAvailabilityService {
   }
 
   networkAvailable() {
-    return Network.connection != 'none';
+    return Network.type != 'none';
   }
 }

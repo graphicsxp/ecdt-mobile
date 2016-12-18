@@ -1,47 +1,29 @@
-
-// https://www.npmjs.com/package/fs-extra
-
+// this is a custom dictionary to make it easy to extend/override
+// provide a name for an entry, it can be anything such as 'copyAssets' or 'copyFonts'
+// then provide an object with a `src` array of globs and a `dest` string
 module.exports = {
-  include: [
-    {
-      src: '{{SRC}}/assets/',
-      dest: '{{WWW}}/assets/'
-    },
-    {
-      src: '{{SRC}}/index.html',
-      dest: '{{WWW}}/index.html'
-    },
-    {
-      src: '{{SRC}}/service-worker.js',
-      dest: '{{WWW}}/service-worker.js'
-    },
-    {
-      src: 'node_modules/ionic-angular/polyfills/polyfills.js',
-      dest: '{{WWW}}/build/polyfills.js'
-    },
-    {
-      src: 'node_modules/ionicons/dist/fonts/',
-      dest: '{{WWW}}/assets/fonts/'
-    },
-    {
-      src: '{{SRC}}/api/orderForms.json',
-      dest: '{{WWW}}/build/orderForms.json'
-    },
-    {
-      src: '{{SRC}}/api/reporting/stacked-chart.json',
-      dest: '{{WWW}}/build/stacked-chart.json'
-    },
-    {
-      src: '{{SRC}}/api/reporting/simple-chart.json',
-      dest: '{{WWW}}/build/simple-chart.json'
-    },
-    {
-      src: '{{SRC}}/api/requests.json',
-      dest: '{{WWW}}/build/requests.json'
-    },
-    {
-      src: 'node_modules/@telerik/kendo-theme-default/dist/all.css',
-      dest: '{{WWW}}/build/telerik.css'
-    }
-  ]
+  copyAssets: {
+    src: ['{{SRC}}/assets/**/*'],
+    dest: '{{WWW}}/assets'
+  },
+  copyIndexContent: {
+    src: ['{{SRC}}/index.html', '{{SRC}}/manifest.json', '{{SRC}}/service-worker.js'],
+    dest: '{{WWW}}'
+  },
+  copyFonts: {
+    src: ['{{ROOT}}/node_modules/ionicons/dist/fonts/**/*', '{{ROOT}}/node_modules/ionic-angular/fonts/**/*'],
+    dest: '{{WWW}}/assets/fonts'
+  },
+  copyPolyfills: {
+    src: ['{{ROOT}}/node_modules/ionic-angular/polyfills/polyfills.js'],
+    dest: '{{BUILD}}'
+  },
+   copyJson: {
+    src: ['{{SRC}}/api/orderForms.json','{{SRC}}/api/reporting/stacked-chart.json','{{SRC}}/api/reporting/simple-chart.json','{{SRC}}/api/requests.json'],
+    dest: '{{BUILD}}'
+  },
+  copyTelerik:{
+    src: ['{{ROOT}}/node_modules/@telerik/kendo-theme-default/dist/all.css'],
+    dest: '{{BUILD}}'
+  }
 };
