@@ -6,6 +6,7 @@ import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
 import { SettingsComponent } from '../pages/settings/settings.component';
 import { LoginComponent } from '../pages/login/login.component';
+import { QuickActionService } from '../pages/shared/service/quickAction-service'; 
 import { Auth, User } from '@ionic/cloud-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { AppVersion } from 'ionic-native';
@@ -32,29 +33,20 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push) {
+  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push, public quickActionService:QuickActionService) {
     this.initializeApp();
-
-    let menu: any;
-
-    if (this._auth.isAuthenticated()) {
-      menu = { title: 'Welcome ' + this._user.details.name + ' (Logout)', component: null }
-    } else {
-      menu = { title: 'Login', component: LoginComponent }
-    }
-
-    this.username = this._user.details.username;
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+
+    this.username = this._user.details.username;
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       AppVersion.getAppName().then(v => this.app['name'] = v);
       AppVersion.getVersionCode().then(v => this.app['versionCode'] = v);
       AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
-      AppVersion.getPackageName().then(v => this.app['versionCode'] = v);
+      AppVersion.getPackageName().then(v => this.app['packageName'] = v);
 
       this.push.register().then((t: PushToken) => {
         return this.push.saveToken(t);
@@ -69,6 +61,23 @@ export class MyApp {
 
       StatusBar.styleDefault();
       StatusBar.overlaysWebView(false); // for ios overlapping
+
+      // quick action service
+      this.quickActionService.onHomeIconPressed.subscribe(
+                (payload) => {
+                    switch(payload){
+                      case 'reports':
+                        this.openPage(ReportingComponent);
+                        break;
+                      case 'requests':
+                        this.openPage(RequestListComponent);
+                        break;
+                      case 'settings':
+                        this.openPage(SettingsComponent);
+                        break;
+                  }
+                }
+            );
 
       if (Splashscreen) {
         setTimeout(() => {
