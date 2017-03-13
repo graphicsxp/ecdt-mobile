@@ -57,7 +57,8 @@
     "cordova-plugin-insomnia",
     "cordova-plugin-nativestorage",
     "cordova-plugin-app-version",
-    "cordova-plugin-network-information"
+    "cordova-plugin-network-information",
+    "cordova-plugin-3dtouch"
   ],
   "cordovaPlatforms": []
 }
