@@ -93,7 +93,7 @@ export class MyApp {
     if (page == this.requestListComponent) {
       this.numberOfDeliveredRequests = 0;
     }
-
+    console.log('openPage called with:'+page);
     this.nav.setRoot(page);
   }
 
