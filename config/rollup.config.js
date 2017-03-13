@@ -19,7 +19,7 @@ var rollupConfig = {
    * sourceMap: If true, a separate sourcemap file will
    * be created.
    */
-  sourceMap: process.env.IONIC_GENERATE_SOURCE_MAP ? true : false,
+  sourceMap: true,
 
   /**
    * format: The format of the generated bundle
@@ -69,7 +69,7 @@ var rollupConfig = {
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/crosshair-tooltip.component': ['CrosshairTooltipComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/crosshair-tooltips-container.component': ['CrosshairTooltipsContainerComponent'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/tooltip-popup.component': ['TooltipPopupComponent'],
-        '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/shared-tooltip-template.directive': ['SharedTooltipTemplateDirective'],        
+        '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/shared-tooltip-template.directive': ['SharedTooltipTemplateDirective'],
         '@progress/kendo-angular-charts/dist/npm/js/chart/tooltip/series-tooltip-template.directive': ['SeriesTooltipTemplateDirective'],
         '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.component': ['ResizeSensorComponent'],
         '@progress/kendo-angular-resize-sensor/dist/npm/js/resize-sensor.module': ['ResizeSensorModule'],
@@ -84,8 +84,8 @@ var rollupConfig = {
       extensions: ['.js']
     }),
     globals(),
-    json(),
-    
+    json()
   ]
-
 };
+
+module.exports = rollupConfig;
