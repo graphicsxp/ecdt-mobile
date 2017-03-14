@@ -2,14 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
+
 import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
 import { SettingsComponent } from '../pages/settings/settings.component';
 import { LoginComponent } from '../pages/login/login.component';
-import { QuickActionService } from '../pages/shared/service/quickAction-service'; 
+import { QuickActionService } from '../pages/shared/service/quickAction-service';
 import { Auth, User } from '@ionic/cloud-angular';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { AppVersion } from 'ionic-native';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -33,14 +35,14 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push, public quickActionService:QuickActionService) {
+  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push, public quickActionService: QuickActionService) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
 
-    this.username = this._user.details.username;
+      this.username = this._user.details.username;
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       AppVersion.getAppName().then(v => this.app['name'] = v);
@@ -56,6 +58,14 @@ export class MyApp {
 
       this.push.rx.notification()
         .subscribe((msg) => {
+          //console.log('calendar event received !');
+          
+          //console.log('calendar event received:' + msg);
+
+          //Calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0));
+
+          //console.log('calendar event created:' +  msg);
+
           this.numberOfDeliveredRequests++;
         });
 
@@ -64,20 +74,20 @@ export class MyApp {
 
       // quick action service
       this.quickActionService.onHomeIconPressed.subscribe(
-                (payload) => {
-                    switch(payload){
-                      case 'reports':
-                        this.openPage(ReportingComponent);
-                        break;
-                      case 'requests':
-                        this.openPage(RequestListComponent);
-                        break;
-                      case 'settings':
-                        this.openPage(SettingsComponent);
-                        break;
-                  }
-                }
-            );
+        (payload) => {
+          switch (payload) {
+            case 'reports':
+              this.openPage(ReportingComponent);
+              break;
+            case 'requests':
+              this.openPage(RequestListComponent);
+              break;
+            case 'settings':
+              this.openPage(SettingsComponent);
+              break;
+          }
+        }
+      );
 
       if (Splashscreen) {
         setTimeout(() => {
@@ -93,7 +103,7 @@ export class MyApp {
     if (page == this.requestListComponent) {
       this.numberOfDeliveredRequests = 0;
     }
-    console.log('openPage called with:'+page);
+    console.log('openPage called with:' + page);
     this.nav.setRoot(page);
   }
 
