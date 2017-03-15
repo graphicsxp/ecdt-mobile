@@ -10,7 +10,7 @@ module.exports = {
     filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
     devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
   },
-  //devtool: 'source-map',
+  devtool: process.env.IONIC_SOURCE_MAP_TYPE,
 
   resolve: {
     extensions: ['.ts', '.js', '.json'],

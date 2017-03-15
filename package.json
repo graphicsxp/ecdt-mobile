@@ -2,7 +2,7 @@
   "name": "ionic-hello-world",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
-  "private": true, 
+  "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
@@ -26,6 +26,8 @@
     "rxjs": "5.0.1",
     "sw-toolbox": "3.4.0",
     "zone.js": "0.7.2",
+
+    "@ionic/cloud-angular": "0.11.0",
     "@progress/kendo-angular-charts": "0.10.4",
     "@telerik/kendo-theme-default": "^1.33.4"
   },
@@ -35,12 +37,10 @@
   },
   "config": {
     "ionic_bundler": "webpack",
-     "ionic_source_map": "source-map",
     "ionic_copy": "./config/copy.config.js",
     "ionic_webpack": "./config/webpack.config.js",
     "ionic_rollup": "./config/rollup.config.js",
     "ionic_sass": "./config/sass.config.js"
-    
   },
   "description": "ecdt-mobile: An Ionic project",
   "cordovaPlugins": [
@@ -59,6 +59,7 @@
     "cordova-plugin-nativestorage",
     "cordova-plugin-app-version",
     "cordova-plugin-network-information",
+    "cordova-plugin-3dtouch",
     "cordova-plugin-calendar"
   ],
   "cordovaPlatforms": []
