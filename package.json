@@ -27,7 +27,7 @@
     "sw-toolbox": "3.4.0",
     "zone.js": "0.7.2",
 
-    "@ionic/cloud-angular": "0.11.0",
+    "@ionic/cloud-angular": "0.9.1",
     "@progress/kendo-angular-charts": "0.10.4",
     "@telerik/kendo-theme-default": "^1.33.4"
   },
