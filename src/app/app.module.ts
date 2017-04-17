@@ -8,6 +8,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { SharedModule } from '../pages/shared/shared.module';
+import { ContactModule } from '../pages/contact/contact.module'
 import { SettingsModule } from '../pages/settings/settings.module';
 import { RequestModule } from '../pages/request/request.module';
 import { LoginModule } from '../pages/login/login.module';
@@ -46,6 +47,7 @@ const cloudSettings: CloudSettings = {
     SharedModule,
     RequestModule,
     SettingsModule,
+    ContactModule,
     LoginModule,
     ReportingModule,
     SignupModule,

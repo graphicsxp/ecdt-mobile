@@ -1,56 +1,54 @@
 <ion-header class="opaque">
-	<ion-navbar>
-		<button ion-button menuToggle>
+  <ion-navbar>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-		<ion-title>Delivered requests</ion-title>
-	</ion-navbar>
+    <ion-title>Delivered requests</ion-title>
+  </ion-navbar>
 </ion-header>
-
 <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
-
 <ion-content padding class="grid-basic-page" *ngIf="requests" fullscreen>
-	<ion-refresher (ionRefresh)="refreshAll($event)">
-		<ion-refresher-content></ion-refresher-content>
-	</ion-refresher>
-	<ion-card>
-		<ion-card-content>
-			<ion-item>
-				<ion-label>show archived ?</ion-label>
-				<ion-toggle checked="false" #showArchived></ion-toggle>
-			</ion-item>
-		</ion-card-content>
-	</ion-card>
-	<ion-list>
-		<ion-list-header>
-			{{requests.length }} requests were delivered
-		</ion-list-header>
-		<ion-item-sliding #slidingItem *ngFor="let request of requests | showArchived: showArchived.checked" class="item item-icon-right"
-			(click)="itemSelected(request)">
-			<ion-item-options side="left" >
-				<button ion-button (click)="markAsRead(request, slidingItem)" *ngIf="!request.isArchived">
+  <ion-refresher (ionRefresh)="refreshAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>show archived ?</ion-label>
+        <ion-toggle checked="false" #showArchived></ion-toggle>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-list-header>
+      {{requests.length }} requests were delivered
+    </ion-list-header>
+    <ion-item-sliding #slidingItem *ngFor="let request of requests | showArchived: showArchived.checked" class="item item-icon-right"
+      (click)="itemSelected(request)">
+      <ion-item-options side="left">
+        <button ion-button (click)="markAsRead(request, slidingItem)" *ngIf="!request.isArchived">
 					<ion-icon name="archive"></ion-icon>
 				</button>
-			</ion-item-options>
-			<ion-item>
-				<ion-grid>
-					<ion-row>
-						<ion-col width-40>
-							<ion-badge>{{request.jobs.length}} jobs</ion-badge>
-						</ion-col>
-						<ion-col>
-							<h3>{{request.requestIdentifier}}</h3>
-							<p> delivered on {{request.deliveryDate | date:'d/M/yyyy'}} at {{request.deliveryDate | date:'shortTime'}}</p>
-							<p>
-								<ion-note>Source language(s): {{request.sourceLanguages}}</ion-note>
-							</p>
-							<p>
-								<ion-note>Target language(s): {{request.targetLanguages}}</ion-note>
-							</p>
-						</ion-col>
-					</ion-row>
-				</ion-grid>
-			</ion-item>
-		</ion-item-sliding>
-	</ion-list>
+      </ion-item-options>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-40>
+              <ion-badge>{{request.jobs.length}} jobs</ion-badge>
+            </ion-col>
+            <ion-col>
+              <h3>{{request.requestIdentifier}}</h3>
+              <p> delivered on {{request.deliveryDate | date:'d/M/yyyy'}} at {{request.deliveryDate | date:'shortTime'}}</p>
+              <p>
+                <ion-note>Source language(s): {{request.sourceLanguages}}</ion-note>
+              </p>
+              <p>
+                <ion-note>Target language(s): {{request.targetLanguages}}</ion-note>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
