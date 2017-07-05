@@ -6,6 +6,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
 import { SettingsComponent } from '../pages/settings/settings.component';
+import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { QuickActionService } from '../pages/shared/service/quickAction-service';
 import { Auth, User } from '@ionic/cloud-angular';
@@ -26,6 +27,7 @@ export class MyApp {
   requestListComponent = RequestListComponent;
   reportingComponent = ReportingComponent;
   settingsComponent = SettingsComponent;
+  contactComponent = ContactComponent;
 
   numberOfDeliveredRequests: number = 0;
   app: any = {
@@ -59,7 +61,7 @@ export class MyApp {
       this.push.rx.notification()
         .subscribe((msg) => {
           //console.log('calendar event received !');
-          
+
           //console.log('calendar event received:' + msg);
 
           //Calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0));
@@ -84,6 +86,9 @@ export class MyApp {
               break;
             case 'settings':
               this.openPage(SettingsComponent);
+              break;
+            case 'contact':
+              this.openPage(ContactComponent);
               break;
           }
         }

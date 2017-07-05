@@ -1,49 +1,39 @@
-<ion-header  class="opaque">
-	<ion-navbar>
-		<ion-title *ngIf="myRequest">
-			Request {{myRequest.requestIdentifier}}
-		</ion-title>
-		<!--<ion-buttons start>
-			<button (click)="dismiss()">
-			<span primary showWhen="ios">Back to list</span>
-			<ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-			</button>
-		</ion-buttons>-->
-	</ion-navbar>
+<ion-header class="opaque">
+  <ion-navbar>
+    <ion-title *ngIf="myRequest">
+      Request {{myRequest.requestIdentifier}}
+    </ion-title>
+  </ion-navbar>
 </ion-header>
-
-<ion-content *ngIf="myRequest" fullscreen>
-
-	<div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
-
-	<ion-card>
-		<ion-card-header>
-			<ion-grid>
-				<ion-row>
-					<ion-col width-20>
-						<ion-badge item-left>{{myRequest.jobs.length}} jobs</ion-badge>
-					</ion-col>
-					<ion-col>
-						<p> delivered on {{myRequest.deliveryDate | date:'d/M/yyyy'}} at {{myRequest.deliveryDate | date:'shortTime'}}</p>
-						<p>
-							<ion-note>Source language(s): {{myRequest.sourceLanguages}}</ion-note>
-						</p>
-						<p>
-							<ion-note>Target language(s): {{myRequest.targetLanguages}}</ion-note>
-						</p>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</ion-card-header>
-
-		<ion-list>
-			<ion-item *ngFor="let job of myRequest.jobs">
-
-				<h2>Translation from {{job.sourceLanguage}} to {{job.targetLanguage}}</h2>
-				<p> Volume: {{job.volume}} - Price: {{job.price}} € </p>
-				<ion-icon class="download" color="primary" item-right name="download" (click)="openDelivery(job)"></ion-icon>
-			</ion-item>
-		</ion-list>
-	</ion-card>
-
+<ion-content padding class="grid-basic-page" fullscreen>
+  <div *ngIf="myRequest">
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+    <ion-card>
+      <ion-card-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-20>
+              <ion-badge item-left>{{myRequest.jobs.length}} jobs</ion-badge>
+            </ion-col>
+            <ion-col>
+              <p> delivered on {{myRequest.deliveryDate | date:'d/M/yyyy'}} at {{myRequest.deliveryDate | date:'shortTime'}}</p>
+              <p>
+                <ion-note>Source language(s): {{myRequest.sourceLanguages}}</ion-note>
+              </p>
+              <p>
+                <ion-note>Target language(s): {{myRequest.targetLanguages}}</ion-note>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+      <ion-list>
+        <ion-item *ngFor="let job of myRequest.jobs">
+          <h2>Translation from {{job.sourceLanguage}} to {{job.targetLanguage}}</h2>
+          <p> Volume: {{job.volume}} - Price: {{job.price}} € </p>
+          <ion-icon class="download" color="primary" item-right name="download" (click)="openDelivery(job)"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
 </ion-content>
