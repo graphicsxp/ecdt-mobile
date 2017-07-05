@@ -10,7 +10,7 @@ export class RequestService extends BaseService<IRequest> {
 
   constructor(_http: Http, @Inject(LoadingService) loadingService: LoadingService) {
     super(_http, loadingService);
-    this.serviceUrl = './build/requests.json';
+    this.serviceUrl = 'requests';
   }
 
   getAll(): Observable<IRequest[]> {

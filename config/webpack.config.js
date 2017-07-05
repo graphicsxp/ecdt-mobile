@@ -26,6 +26,11 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: process.env.IONIC_WEBPACK_LOADER
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       }
     ]
   },

@@ -12,7 +12,9 @@ export interface IBase {
 @Injectable()
 export abstract class BaseService<T extends IBase> {
   private _loadingService: LoadingService;
-  public serviceUrl
+  public baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3002/' : './build/';
+  public serviceUrl;
+
   constructor(private _http: Http, @Inject(LoadingService) loadingService: LoadingService) {
     console.log('Hello BaseService Provider');
     this._loadingService = loadingService;
@@ -20,7 +22,7 @@ export abstract class BaseService<T extends IBase> {
 
   getAll(): Observable<T[]> {
     this._loadingService.presentLoading();
-    return this._http.get(this.serviceUrl)
+    return this._http.get(this.baseUrl + this.serviceUrl)
       .map((response: Response) => <T[]>response.json())
       .finally(() => this._loadingService.hideLoading())
       .do(data => console.log("All: " + JSON.stringify(data)))

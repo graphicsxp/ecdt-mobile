@@ -21,7 +21,10 @@ export class RequestListComponent implements OnInit {
 
     this._requestService.getAll()
       .subscribe(
-      requests => this.requests = requests,
+      (requests) => {
+        this.requests = requests
+      },
+
       error => this.errorMessage = <any>error
       );
   }
@@ -40,7 +43,7 @@ export class RequestListComponent implements OnInit {
     toast.present();
     event.stopPropagation();
     slidingItem.close();
-    request.isArchived =  true;    
+    request.isArchived =  true;
   }
 
   refreshAll(refresher) {

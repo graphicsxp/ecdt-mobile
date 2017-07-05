@@ -19,7 +19,7 @@ module.exports = {
     dest: '{{BUILD}}'
   },
    copyJson: {
-    src: ['{{SRC}}/api/orderForms.json','{{SRC}}/api/reporting/stacked-chart.json','{{SRC}}/api/reporting/simple-chart.json','{{SRC}}/api/requests.json'],
+    src: ['{{SRC}}/api/orderForms','{{SRC}}/api/reporting/stacked-chart.json','{{SRC}}/api/reporting/simple-chart.json','{{SRC}}/api/requests'],
     dest: '{{BUILD}}'
   },
   copyTelerik:{

@@ -7,7 +7,12 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "prestart": "babel-node ./hooks/preBuild",
+    "start": "npm-run-all --parallel start-mockapi-server ionic:serve",
+    "generate-mock-data": "babel-node ./hooks/generateMockData",
+    "prestart-mockapi-server": "npm run generate-mock-data",
+    "start-mockapi-server": "json-server --watch src/api/db.json --port 3002"
   },
   "dependencies": {
     "@angular/common": "2.4.8",
@@ -26,13 +31,18 @@
     "rxjs": "5.0.1",
     "sw-toolbox": "3.4.0",
     "zone.js": "0.7.2",
-
     "@ionic/cloud-angular": "0.9.1",
     "@progress/kendo-angular-charts": "0.10.4",
     "@telerik/kendo-theme-default": "^1.33.4"
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-latest": "^6.24.1",
+    "json-schema-faker": "^0.5.0-rc8",
+    "json-server": "^0.11.0",
+    "npm-run-all": "^4.0.2",
     "typescript": "2.0.9"
   },
   "config": {
