@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "ionic-hello-world",
   "author": "Ionic Framework",
@@ -14,78 +13,6 @@
     "generate-mock-data": "babel-node ./hooks/generateMockData",
     "prestart-mockapi-server": "npm run generate-mock-data",
     "start-mockapi-server": "json-server --watch src/api/db.json --port 3002"
-  },
-  "dependencies": {
-    "@angular/common": "2.4.8",
-    "@angular/compiler": "2.4.8",
-    "@angular/compiler-cli": "2.4.8",
-    "@angular/core": "2.4.8",
-    "@angular/forms": "2.4.8",
-    "@angular/http": "2.4.8",
-    "@angular/platform-browser": "2.4.8",
-    "@angular/platform-browser-dynamic": "2.4.8",
-    "@angular/platform-server": "2.4.8",
-    "@ionic/storage": "2.0.0",
-    "ionic-angular": "2.2.0",
-    "ionic-native": "2.4.1",
-    "ionicons": "3.0.0",
-    "rxjs": "5.0.1",
-    "sw-toolbox": "3.4.0",
-    "zone.js": "0.7.2",
-    "@ionic/cloud-angular": "0.9.1",
-    "@progress/kendo-angular-charts": "0.10.4",
-    "@telerik/kendo-theme-default": "^1.33.4"
-  },
-  "devDependencies": {
-    "@ionic/app-scripts": "1.1.4",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-preset-latest": "^6.24.1",
-    "json-schema-faker": "^0.5.0-rc8",
-    "json-server": "^0.11.0",
-    "npm-run-all": "^4.0.2",
-    "typescript": "2.0.9"
-  },
-  "config": {
-    "ionic_bundler": "webpack",
-    "ionic_copy": "./config/copy.config.js",
-    "ionic_webpack": "./config/webpack.config.js",
-    "ionic_rollup": "./config/rollup.config.js",
-    "ionic_sass": "./config/sass.config.js"
-  },
-  "description": "ecdt-mobile: An Ionic project",
-  "cordovaPlugins": [
-    "cordova-plugin-device",
-    "cordova-plugin-console",
-    "cordova-plugin-whitelist",
-    "cordova-plugin-splashscreen",
-    "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard",
-    "cordova-plugin-file",
-    "cordova-plugin-file-opener2",
-    "cordova-plugin-file-transfer",
-    "cordova-plugin-badge",
-    "cordova-plugin-vibration",
-    "cordova-plugin-insomnia",
-    "cordova-plugin-nativestorage",
-    "cordova-plugin-app-version",
-    "cordova-plugin-network-information",
-    "cordova-plugin-3dtouch",
-    "cordova-plugin-calendar"
-  ],
-  "cordovaPlatforms": []
-}
-=======
-{
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
-  "scripts": {
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/common": "4.0.0",
@@ -106,7 +33,6 @@
     "rxjs": "5.1.1",
     "sw-toolbox": "3.6.0",
     "zone.js": "^0.8.4",
-
     "@ionic/cloud-angular": "0.12.0",
     "@progress/kendo-angular-charts": "0.24.0",
     "@telerik/kendo-theme-default": "^1.33.4",
@@ -116,6 +42,12 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.3.4",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-latest": "^6.24.1",
+    "json-schema-faker": "^0.5.0-rc8",
+    "json-server": "^0.11.0",
+    "npm-run-all": "^4.0.2",
     "typescript": "~2.2.1"
   },
   "config": {
@@ -147,4 +79,3 @@
   ],
   "cordovaPlatforms": []
 }
->>>>>>> a691c25e0fd0b6aa47c20f450f8316d3b9438464
