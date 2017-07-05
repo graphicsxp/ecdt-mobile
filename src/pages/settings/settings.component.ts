@@ -22,7 +22,12 @@ export class SettingsComponent {
   }
 
   createEvent(): void {
-    Calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0));
+    Calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0)).then(
+      (msg) => {
+        Calendar.openCalendar(new Date(2017, 3, 1, 9, 0));
+      },
+      (err) => { console.log(err); }
+    );
   }
 
   onKeepAwake(): void {
