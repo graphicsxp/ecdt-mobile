@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 export interface IBase {
-    id: number;
+  id: number;
 }
 
 @Injectable()

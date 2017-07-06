@@ -11,11 +11,15 @@ export const schema = {
           "id": {
             "$ref": "#/definitions/positiveInt"
           },
-
+        "email": {
+            "type": "string",
+            "format": "email",
+            "faker": "internet.email"
+          },
           "requestIdentifier": {
             "type": "string",
             "faker": {
-              "fake": "2017/{{random.number}}"
+              "custom.requestIdentifier": []
             }
           },
           "deliveryDate": {
@@ -53,9 +57,32 @@ export const schema = {
               "minItems": 1,
               "maxItems": 1,
               "uniqueItems": true
+          },
+          "jobs":{
+              "type": "array",
+              "items":{
+                "type": "object",
+                "properties": {
+                   "id": {
+                    "$ref": "#/definitions/positiveInt"
+                  },
+                  "volume":{
+                     "type": "integer",
+                     "minimum": 1,
+                     "maximum": 999,
+                  },
+                  "price": {
+                    "type": "string",
+                    "faker": {
+                      "finance.amount": [100, 2000, 2, "€"]
+                    }
+                  }
+                },
+                "required": ["id", "volume"]
+              }
           }
         },
-        "required": ["id",  "requestIdentifier", "deliveryDate", "targetLanguages", "sourceLanguages"]
+        "required": ["id",  "requestIdentifier", "deliveryDate", "targetLanguages", "sourceLanguages", "jobs"]
       }
     }
   },

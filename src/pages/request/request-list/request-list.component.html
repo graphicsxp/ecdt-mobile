@@ -21,7 +21,7 @@
   </ion-card>
   <ion-list>
     <ion-list-header>
-      {{requests.length }} requests were delivered
+      <span>{{(requests | showArchived: showArchived.checked).length  }} requests were delivered</span>
     </ion-list-header>
     <ion-item-sliding #slidingItem *ngFor="let request of requests | showArchived: showArchived.checked" class="item item-icon-right"
       (click)="itemSelected(request)">
@@ -34,7 +34,7 @@
 				<ion-grid>
 					<ion-row>
 						<ion-col width-40>
-							<!--<ion-badge>{{request.jobs.length}} jobs</ion-badge>-->
+							<ion-badge>{{request.jobs.length}} jobs</ion-badge>
 						</ion-col>
 						<ion-col>
 							<h3>{{request.requestIdentifier}}</h3>
