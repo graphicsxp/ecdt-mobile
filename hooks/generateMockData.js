@@ -19,7 +19,7 @@ jsf.extend('faker', function(){
   faker.custom = {
 
     requestIdentifier: function() {
-      return  "2017/" + pad(faker.random.number({min:0, max:999999}), 6);
+      return  new Date.getFullYear() + pad(faker.random.number({min:0, max:999999}), 6);
     }
   };
   return faker;
