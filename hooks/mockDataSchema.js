@@ -74,12 +74,42 @@ export const schema = {
                   "price": {
                     "type": "string",
                     "faker": {
-                      "finance.amount": [100, 2000, 2, "€"]
+                      "finance.amount": [100, 2000, 2]
                     }
-                  }
+                  },
+                  "targetLanguage":{
+                      "type": "array",
+                      "items": {
+                          "enum": [
+                            "FR",
+                            "DE",
+                            "ES",
+                            "IT"
+                          ]
+                      },
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "uniqueItems": true
+                  },
+                    "sourceLanguage":{
+                      "type": "array",
+                      "items": {
+                          "enum": [
+                            "FR",
+                            "DE",
+                            "ES",
+                            "IT"
+                          ]
+                      },
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "uniqueItems": true
+                  },
                 },
-                "required": ["id", "volume"]
-              }
+                "required": ["id", "volume", "price", "sourceLanguage", "targetLanguage"]
+              },
+               "minItems": 1,
+              "maxItems": 23
           }
         },
         "required": ["id",  "requestIdentifier", "deliveryDate", "targetLanguages", "sourceLanguages", "jobs"]

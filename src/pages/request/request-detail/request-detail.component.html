@@ -30,7 +30,7 @@
       <ion-list>
         <ion-item *ngFor="let job of myRequest.jobs">
           <h2>Translation from {{job.sourceLanguage}} to {{job.targetLanguage}}</h2>
-          <p> Volume: {{job.volume}} - Price: {{job.price}} € </p>
+          <p> Volume: {{job.volume}} pages - Price: {{job.price}} € </p>
           <ion-icon class="download" color="primary" item-right name="download" (click)="openDelivery(job)"></ion-icon>
         </ion-item>
       </ion-list>
