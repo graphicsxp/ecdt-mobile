@@ -48,11 +48,7 @@
     "json-schema-faker": "^0.5.0-rc8",
     "json-server": "^0.11.0",
     "npm-run-all": "^4.0.2",
-<<<<<<< HEAD
-    "typescript": "~2.2.1"
-=======
     "typescript": "2.2.1"
->>>>>>> 1eba13d67565c0bbcd8fe20b800ebb009cd21a8a
   },
   "config": {
     "ionic_bundler": "webpack",
