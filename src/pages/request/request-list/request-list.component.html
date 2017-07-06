@@ -29,6 +29,7 @@
         <button ion-button (click)="markAsRead(request, slidingItem)" *ngIf="!request.isArchived">
 					<ion-icon name="archive"></ion-icon>
 				</button>
+<<<<<<< HEAD
       </ion-item-options>
       <ion-item>
         <ion-grid>
@@ -52,3 +53,27 @@
     </ion-item-sliding>
   </ion-list>
 </ion-content>
+=======
+			</ion-item-options>
+			<ion-item>
+				<ion-grid>
+					<ion-row>
+						<ion-col width-40>
+							<!--<ion-badge>{{request.jobs.length}} jobs</ion-badge>-->
+						</ion-col>
+						<ion-col>
+							<h3>{{request.requestIdentifier}}</h3>
+							<p> delivered on {{request.deliveryDate | date:'d/M/yyyy'}} at {{request.deliveryDate | date:'shortTime'}}</p>
+							<p>
+								<ion-note>Source language(s): {{request.sourceLanguages}}</ion-note>
+							</p>
+							<p>
+								<ion-note>Target language(s): {{request.targetLanguages}}</ion-note>
+							</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+		</ion-item-sliding>
+	</ion-list>
+>>>>>>> 1eba13d67565c0bbcd8fe20b800ebb009cd21a8a
