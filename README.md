@@ -1,5 +1,6 @@
 # ecdt-mobile
 Steps to compile and deploy:
+* don't upgrade to npm@5, stay with the latest 4 version
 * npm i -g cordova
 * npm i -g ionic
 * install [gradle](https://docs.gradle.org/current/userguide/installation.html) manually
