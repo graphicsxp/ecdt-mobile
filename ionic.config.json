@@ -1,5 +1,8 @@
 {
   "name": "ecdt-mobile",
   "app_id": "c2ece704",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
