@@ -1,17 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
+import { Auth, User } from '@ionic/cloud-angular';
+import { AppVersion } from 'ionic-native';
+import { FCM } from '@ionic-native/fcm';
 
 import { ReportingComponent } from '../pages/reporting/reporting.component';
+import { CalendarPage } from './../pages/calendar/calendar';
 import { RequestListComponent } from '../pages/request/request-list/request-list.component';
 import { SettingsComponent } from '../pages/settings/settings.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { QuickActionService } from '../pages/shared/service/quickAction-service';
-import { Auth, User } from '@ionic/cloud-angular';
-import { Push, PushToken } from '@ionic/cloud-angular';
-import { AppVersion } from 'ionic-native';
 
 
 @Component({
@@ -28,6 +28,7 @@ export class MyApp {
   reportingComponent = ReportingComponent;
   settingsComponent = SettingsComponent;
   contactComponent = ContactComponent;
+  calendarComponent = CalendarPage;
 
   numberOfDeliveredRequests: number = 0;
   app: any = {
@@ -37,7 +38,7 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, public push: Push, public quickActionService: QuickActionService) {
+  constructor(public platform: Platform, private _auth: Auth, public _user: User, private _alertController: AlertController, private fcm: FCM, public quickActionService: QuickActionService) {
     this.initializeApp();
   }
 
@@ -52,24 +53,22 @@ export class MyApp {
       AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
       AppVersion.getPackageName().then(v => this.app['packageName'] = v);
 
-      this.push.register().then((t: PushToken) => {
-        return this.push.saveToken(t);
-      }).then((t: PushToken) => {
-        console.log('Token saved:', t.token);
+      this.fcm.subscribeToTopic('marketing');
+
+      this.fcm.getToken().then((t) => {
+        console.log('Token received:', t)
       });
 
-      this.push.rx.notification()
-        .subscribe((msg) => {
-          //console.log('calendar event received !');
 
-          //console.log('calendar event received:' + msg);
+      this.fcm.onNotification().subscribe(data => {
+        if (data.wasTapped) {
 
-          //Calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0));
+        } else {
 
-          //console.log('calendar event created:' +  msg);
+        };
 
-          this.numberOfDeliveredRequests++;
-        });
+        this.numberOfDeliveredRequests++;
+      })
 
       StatusBar.styleDefault();
       StatusBar.overlaysWebView(false); // for ios overlapping

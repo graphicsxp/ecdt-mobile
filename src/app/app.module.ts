@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FCM } from '@ionic-native/fcm';
 
 import { IonicApp, IonicModule } from 'ionic-angular';
 
@@ -14,6 +15,7 @@ import { RequestModule } from '../pages/request/request.module';
 import { LoginModule } from '../pages/login/login.module';
 import { ReportingModule } from '../pages/reporting/reporting.module';
 import { SignupModule } from '../pages/signup/signup.module';
+import { CalendarModule } from './../pages/calendar/calendar.module';
 
 import 'rxjs/Rx'; // load all features of reactive extensions
 
@@ -51,6 +53,7 @@ const cloudSettings: CloudSettings = {
     LoginModule,
     ReportingModule,
     SignupModule,
+    CalendarModule,
     ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
@@ -59,6 +62,6 @@ const cloudSettings: CloudSettings = {
   entryComponents: [
     MyApp
   ],
-  providers: []
+  providers: [FCM]
 })
 export class AppModule { }

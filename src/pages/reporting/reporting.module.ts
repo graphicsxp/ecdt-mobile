@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IonicModule } from 'ionic-angular';
+import { IonicPageModule } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { SimpleChartComponent } from './simpleChart/simple-chart.component';
@@ -9,7 +9,11 @@ import { ReportingService } from './service/reporting-service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [IonicModule, ChartsModule, SharedModule, BrowserAnimationsModule],  //no forRoot here
+  imports: [
+    IonicPageModule.forChild(ReportingComponent),
+    ChartsModule,
+    SharedModule,
+    BrowserAnimationsModule],  //no forRoot here
   providers: [ReportingService],
   declarations: [ReportingComponent, SimpleChartComponent, StackedChartComponent],
   exports: [ReportingComponent],

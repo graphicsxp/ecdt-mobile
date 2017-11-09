@@ -17,6 +17,9 @@
         Delivered requests
         <ion-badge *ngIf="numberOfDeliveredRequests > 0" item-right item>{{numberOfDeliveredRequests}}</ion-badge>
       </ion-item>
+      <ion-item menuClose (click)="openPage(calendarComponent)">
+        Calendar
+      </ion-item>
       <ion-item menuClose (click)="openPage(reportingComponent)">
         Reporting
       </ion-item>
