@@ -90,7 +90,7 @@ export class MyApp {
     };
     firebase.initializeApp(config);
 
-    const unsubscribe = firebase.auth().onAuthStateChanged( user => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (!user) {
         this.rootPage = 'LoginComponent';
         unsubscribe();
@@ -101,21 +101,23 @@ export class MyApp {
       }
     });
 
-    // this.fcm.subscribeToTopic('marketing');
+      if (this.platform.is('cordova')) {
+        this.fcm.subscribeToTopic('marketing');
 
-    // this.fcm.getToken().then((t) => {
-    //   console.log('Token received:', t)
-    // });
+        this.fcm.getToken().then((t) => {
+          console.log('Token received:', t)
+        });
 
-    // this.fcm.onNotification().subscribe(data => {
-    //   if (data.wasTapped) {
+        this.fcm.onNotification().subscribe(data => {
+          if (data.wasTapped) {
 
-    //   } else {
+          } else {
 
-    //   };
+          };
 
-    //   this.numberOfDeliveredRequests++;
-    // })
+          this.numberOfDeliveredRequests++;
+        })
+      }
   }
 
   openPage(page) {

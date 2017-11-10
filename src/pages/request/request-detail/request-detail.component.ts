@@ -18,7 +18,7 @@ export class RequestDetailComponent implements OnInit {
     constructor(private _navParams: NavParams,
         private _viewCtrl: ViewController,
         private _requestService: RequestService,
-        private _platform: Platform) { 
+        private _platform: Platform) {
         }
 
     //ionViewDidLoad() {
