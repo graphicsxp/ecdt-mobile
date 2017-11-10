@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController, IonicPage } from 'ionic-angular';
 import * as moment from 'moment';
 
 /**
@@ -8,6 +8,7 @@ import * as moment from 'moment';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+@IonicPage()
 
 @Component({
   selector: 'page-calendar',

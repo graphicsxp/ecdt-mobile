@@ -1,7 +1,11 @@
 .ios, .md {
- 
+
     login-page {
- 
+
+        .invalid {
+          border-bottom: 1px solid #FF6153;
+        }
+
         ion-header {
             background-color: map-get($colors, light);
         }
@@ -13,53 +17,24 @@
         ion-content {
             background-color: map-get($colors, primary);
         }
- 
-        scroll-content {
-            display: flex;
-            flex-direction: column;
-        }
- 
-        ion-row {
-            align-items: center;
-            text-align: center;
-        }
- 
-        ion-item {
-            border-radius: 30px !important;
-            padding-left: 10px !important;
-            margin-bottom: 10px;
-            background-color: #f6f6f6;
-            opacity: 0.7;
-            font-size: 0.9em;
-        }
- 
-        ion-list {
-            margin: 0;
-        }
 
-      
- 
         .login-logo {
             flex: 2;
         }
- 
-        .login-form {
-            flex: 1;
-        }
- 
-        .create-account {
+
+        button {
             color: #fff;
             text-decoration: underline;
             background: none;
         }
- 
+
         .login-button {
             border-radius: 30px;
             font-size: 0.9em;
             background-color: transparent;
             border: 1px solid #fff;
         }
- 
+
     }
- 
+
 }

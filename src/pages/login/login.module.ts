@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {LoginComponent} from './login.component';
+import {LoginComponent} from './login';
 
 @NgModule({
   imports:[IonicPageModule.forChild(LoginComponent)],  //no forRoot here

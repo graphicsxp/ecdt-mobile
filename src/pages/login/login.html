@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-10>
+        <img src="assets/images/favicon-32x32.png" />
+      </ion-col>
+      <ion-col>
+        <ion-title>eCdT. Mobile </ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!loginForm.controls.email.valid && blur"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input formControlName="password" type="password" placeholder="Your password" [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit" [disabled]="!loginForm.valid" color="primary" class="login-button">
+      Login
+    </button>
+  </form>
+
+  <button ion-button block clear (click)="goToSignup()" class="create-account">
+    Create a new account
+  </button>
+  <button ion-button block clear (click)="goToResetPassword()" class="create-account">
+    I forgot my password
+  </button>
+</ion-content>

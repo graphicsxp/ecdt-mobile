@@ -1,12 +1,12 @@
+import { SignupPage } from './signup';
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {SignupComponent} from './signup.component';
 
 @NgModule({
-  imports:[IonicPageModule.forChild(SignupComponent)],  //no forRoot here
-  declarations:[SignupComponent],
-  exports:[SignupComponent],
-  entryComponents:[SignupComponent]  //<-- add all your module components to here
+  imports:[IonicPageModule.forChild(SignupPage)],  //no forRoot here
+  declarations:[SignupPage],
+  exports:[SignupPage],
+  entryComponents:[SignupPage]  //<-- add all your module components to here
 })
 export class SignupModule{
 

@@ -4,7 +4,7 @@
       <ion-avatar item-left>
         <img src="assets/images/favicon-32x32.png">
       </ion-avatar>
-      <h2>Welcome {{_user.details.name}} </h2>
+      <h2>Welcome {{username}} </h2>
       <p>{{app.name}} v.{{app.versionNumber}}</p>
       <p>{{app.versionCode}}</p>
       <p>{{app.packageName}}</p>
@@ -17,7 +17,7 @@
         Delivered requests
         <ion-badge *ngIf="numberOfDeliveredRequests > 0" item-right item>{{numberOfDeliveredRequests}}</ion-badge>
       </ion-item>
-      <ion-item menuClose (click)="openPage(calendarComponent)">
+      <ion-item menuClose (click)="openPage('CalendarPage')">
         Calendar
       </ion-item>
       <ion-item menuClose (click)="openPage(reportingComponent)">
