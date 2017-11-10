@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, IonicPage } from 'ionic-angular';
 
 import { Insomnia, NativeStorage, Calendar } from 'ionic-native';
 
+@IonicPage()
+
 @Component({
   selector: 'settings',
-  templateUrl: 'settings.component.html'
+  templateUrl: 'settings.html'
 })
-export class SettingsComponent {
+export class SettingsPage {
 
   public keepAwake: boolean = false;
 

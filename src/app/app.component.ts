@@ -7,14 +7,10 @@ import { FCM } from '@ionic-native/fcm';
 
 import * as firebase from "firebase";
 
-import { ReportingComponent } from '../pages/reporting/reporting.component';
 import { CalendarPage } from './../pages/calendar/calendar';
-import { RequestListComponent } from '../pages/request/request-list/request-list.component';
-import { SettingsComponent } from '../pages/settings/settings.component';
-import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login';
 import { QuickActionService } from '../pages/shared/service/quickAction-service';
-
+import { RequestListComponent } from './../pages/request/request-list/request-list.component';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,10 +23,6 @@ export class MyApp {
   pages: Array<{ title: string, component: any }>;
   username: string;
   requestListComponent = RequestListComponent;
-  reportingComponent = ReportingComponent;
-  settingsComponent = SettingsComponent;
-  contactComponent = ContactComponent;
-  calendarComponent = CalendarPage;
 
   numberOfDeliveredRequests: number = 0;
   app: any = {
@@ -63,16 +55,16 @@ export class MyApp {
         (payload) => {
           switch (payload) {
             case 'reports':
-              this.openPage(ReportingComponent);
+              this.openPage('ReportingPage');
               break;
             case 'requests':
               this.openPage(RequestListComponent);
               break;
             case 'settings':
-              this.openPage(SettingsComponent);
+              this.openPage('SettingsPage');
               break;
             case 'contact':
-              this.openPage(ContactComponent);
+              this.openPage('ContactPage');
               break;
           }
         }

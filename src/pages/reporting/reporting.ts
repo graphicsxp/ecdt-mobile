@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { ReportingService } from './service/reporting-service';
+
+@IonicPage()
 
 @Component({
   selector: 'reporting',
-  templateUrl: 'reporting.component.html',
+  templateUrl: 'reporting.html',
   providers: [ReportingService]
 })
-export class ReportingComponent implements OnInit {
+export class ReportingPage implements OnInit {
 
   public model;
   public selectedReport = 'breakdownPerMonthAndTargetLanguage';

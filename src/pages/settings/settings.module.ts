@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {SettingsComponent} from './settings.component';
+import {SettingsPage} from './settings';
 
 @NgModule({
-  imports:[IonicPageModule.forChild(SettingsComponent)],  //no forRoot here
-  declarations:[SettingsComponent],
-  exports:[SettingsComponent],
-  entryComponents:[SettingsComponent]  //<-- add all your module components to here
+  imports:[IonicPageModule.forChild(SettingsPage)],  //no forRoot here
+  declarations:[SettingsPage],
+  exports:[SettingsPage],
+  entryComponents:[SettingsPage]  //<-- add all your module components to here
 })
 export class SettingsModule{
 
