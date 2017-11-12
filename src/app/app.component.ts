@@ -1,8 +1,9 @@
 import { AuthProvider } from './../providers/auth/auth';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-import { AppVersion } from 'ionic-native';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { AppVersion } from '@ionic-native/app-version';
 import { FCM } from '@ionic-native/fcm';
 
 import * as firebase from "firebase";
@@ -32,7 +33,14 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform, private _auth: AuthProvider, private _alertController: AlertController, private fcm: FCM, public quickActionService: QuickActionService) {
+  constructor(public platform: Platform,
+    private _auth: AuthProvider,
+    private _alertController: AlertController,
+    private fcm: FCM,
+    public quickActionService: QuickActionService,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private appVersion: AppVersion) {
     this.initializeApp();
     this.initializeFirebase();
   }
@@ -42,13 +50,13 @@ export class MyApp {
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      AppVersion.getAppName().then(v => this.app['name'] = v);
-      AppVersion.getVersionCode().then(v => this.app['versionCode'] = v);
-      AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
-      AppVersion.getPackageName().then(v => this.app['packageName'] = v);
+      this.appVersion.getAppName().then(v => this.app['name'] = v);
+      this.appVersion.getVersionCode().then(v => this.app['versionCode'] = v);
+      this.appVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
+      this.appVersion.getPackageName().then(v => this.app['packageName'] = v);
 
-      StatusBar.styleDefault();
-      StatusBar.overlaysWebView(false); // for ios overlapping
+      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false); // for ios overlapping
 
       // quick action service
       this.quickActionService.onHomeIconPressed.subscribe(
@@ -70,9 +78,9 @@ export class MyApp {
         }
       );
 
-      if (Splashscreen) {
+      if (this.splashScreen) {
         setTimeout(() => {
-          Splashscreen.hide();
+          this.splashScreen.hide();
         }, 100);
       }
     });

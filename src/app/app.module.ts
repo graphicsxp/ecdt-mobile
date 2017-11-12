@@ -1,19 +1,22 @@
-import { RequestModule } from './../pages/request/request.module';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { FCM } from '@ionic-native/fcm';
-
-import { IonicApp, IonicModule } from 'ionic-angular';
-
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { SharedModule } from '../pages/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import 'rxjs/Rx'; // load all features of reactive extensions
 
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RequestModule } from './../pages/request/request.module';
+import { SharedModule } from '../pages/shared/shared.module';
+
 import { AuthProvider } from '../providers/auth/auth';
+
+import { FCM } from '@ionic-native/fcm';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { AppVersion } from '@ionic-native/app-version';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { AuthProvider } from '../providers/auth/auth';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     RequestModule,
     SharedModule,
@@ -31,7 +35,12 @@ import { AuthProvider } from '../providers/auth/auth';
   entryComponents: [
     MyApp
   ],
-  providers: [FCM,
-    AuthProvider]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FCM,
+    AuthProvider,
+    SplashScreen,
+    StatusBar,
+    AppVersion]
 })
 export class AppModule { }

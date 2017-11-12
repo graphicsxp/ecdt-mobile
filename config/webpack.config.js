@@ -112,7 +112,7 @@ var prodConfig = {
 
     resolve: {
         extensions: ['.ts', '.js', '.json'],
-        modules: [path.resolve('node_modules')]
+        modules: [path.resolve('node_modules')],
     },
 
     module: {
