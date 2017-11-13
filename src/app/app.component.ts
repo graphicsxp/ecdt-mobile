@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AuthProvider } from './../providers/auth/auth';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
@@ -25,6 +26,7 @@ export class MyApp {
   requestListComponent = RequestListComponent;
 
   numberOfDeliveredRequests: number = 0;
+  numberOfCalendarEvents: number = 0;
   app: any = {
     name: '',
     versionCode: '',
@@ -32,7 +34,12 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform, private _auth: AuthProvider, private _alertController: AlertController, private fcm: FCM, public quickActionService: QuickActionService) {
+  constructor(public platform: Platform, private _auth: AuthProvider,
+    private _alertController: AlertController,
+    private fcm: FCM,
+    private _localNotifications: LocalNotifications,
+    public quickActionService: QuickActionService) {
+
     this.initializeApp();
     this.initializeFirebase();
   }
@@ -101,32 +108,45 @@ export class MyApp {
       }
     });
 
-      if (this.platform.is('cordova')) {
-        this.fcm.subscribeToTopic('marketing');
-
-        this.fcm.getToken().then((t) => {
-          let alert = this._alertController.create({
-            message: t.toString(),
-            buttons: [
-              {
-                text: "Ok",
-                role: 'cancel'
-              }
-            ]
-          });
-          alert.present();
+    if (this.platform.is('cordova')) {
+      this.fcm.getToken().then((t) => {
+        console.log(t.toString());
+        this.fcm.subscribeToTopic(t.toString());
+        let alert = this._alertController.create({
+          message: t.toString(),
+          buttons: [
+            {
+              text: "Ok",
+              role: 'cancel'
+            }
+          ]
         });
+        alert.present();
+      });
 
-        this.fcm.onNotification().subscribe(data => {
-          if (data.wasTapped) {
+      this.fcm.onNotification().subscribe(data => {
+        console.log(data);
+        if (data.wasTapped) {
+          this.nav.setRoot('CalendarPage');
+        } else {
+          this._localNotifications.schedule({
+            id: 1,
+            text: data.notification_title,
+            data: {
+              title: data.notificationTitle,
+              body: data.notificationMessage,
+              targetLanguage: data.targetLanguage,
+              taskDeadline: data.taskDeadline,
+              taskType: data.taskType
+            }
+          });
+        };
 
-          } else {
+        this.nav.setRoot('CalendarPage', { title: data.notificationTitle + ':' + data.notificationMessage, taskDeadline: data.taskDeadline, taskType: data.taskType });
 
-          };
-
-          this.numberOfDeliveredRequests++;
-        })
-      }
+        this.numberOfCalendarEvents++;
+      })
+    }
   }
 
   openPage(page) {
@@ -134,6 +154,9 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     if (page == this.requestListComponent) {
       this.numberOfDeliveredRequests = 0;
+    }
+    if (page === 'CalendarPage') {
+      this.numberOfCalendarEvents = 0;
     }
     console.log('openPage called with:' + page);
     this.nav.setRoot(page);

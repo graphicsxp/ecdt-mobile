@@ -19,6 +19,7 @@
       </ion-item>
       <ion-item menuClose (click)="openPage('CalendarPage')">
         Calendar
+        <ion-badge *ngIf="numberOfCalendarEvents > 0" item-right item>{{numberOfCalendarEvents}}</ion-badge>
       </ion-item>
       <ion-item menuClose (click)="openPage('ReportingPage')">
         Reporting

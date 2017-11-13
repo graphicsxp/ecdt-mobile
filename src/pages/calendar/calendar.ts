@@ -27,19 +27,21 @@ export class CalendarPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController) {
+    if (navParams.data) {
+      this.addEvent(navParams.data.title, navParams.data.taskType, navParams.data.taskDeadline);
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarPage');
-    this.addEvent();
   }
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
 
-  addEvent() {
-    let eventData = { title: "You have received a new task", startTime: new Date(2017, 10, 7, 11, 45), endTime: new Date(2017, 10, 7, 11, 55) };
+  addEvent(title, taskType, startTime) {
+    let eventData = { title: title, startTime: new Date(startTime), endTime: moment(new Date(startTime)).add(30, 'm').toDate() };
 
     let events = this.eventSource;
     events.push(eventData);

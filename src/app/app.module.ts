@@ -14,6 +14,7 @@ import { SharedModule } from '../pages/shared/shared.module';
 import 'rxjs/Rx'; // load all features of reactive extensions
 
 import { AuthProvider } from '../providers/auth/auth';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp
   ],
   providers: [FCM,
+    LocalNotifications,
     AuthProvider]
 })
 export class AppModule { }
