@@ -20,10 +20,10 @@ export class AuthProvider {
 
   signupUser(email: string, password: string, username: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password).then(
-      newUser => {  
+      newUser => {
         newUser.updateProfile({
           displayName: username
-        })      
+        })
         firebase.database().ref('/userProfile')
           .child(newUser.uid)
           .set({ email: email, displayName: username });
@@ -35,7 +35,19 @@ export class AuthProvider {
     return firebase.auth().sendPasswordResetEmail(email);
   }
 
-  logoutUser(): Promise<void>{
+  logoutUser(): Promise<void> {
     return firebase.auth().signOut();
+  }
+
+  getCurrentUser(): firebase.User {
+    return firebase.auth().currentUser;
+  }
+
+  getToken(): Promise<any> {
+    return firebase.auth().currentUser.getIdToken();
+  }
+
+  getUserEmail(): string {
+    return firebase.auth().currentUser.email;
   }
 }

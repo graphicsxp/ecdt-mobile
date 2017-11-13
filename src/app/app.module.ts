@@ -21,6 +21,8 @@ import { FCM } from '@ionic-native/fcm';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AppVersion } from '@ionic-native/app-version';
+import { TouchID } from '@ionic-native/touch-id';
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { AppVersion } from '@ionic-native/app-version';
     SplashScreen,
     StatusBar,
     AppVersion,
-    LocalNotifications,]
+    LocalNotifications,
+    AndroidFingerprintAuth,
+    TouchID]
 })
 export class AppModule { }

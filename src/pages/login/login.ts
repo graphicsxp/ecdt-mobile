@@ -6,8 +6,8 @@ import { IonicPage, NavController, Loading, LoadingController, MenuController, P
 import { Component } from '@angular/core';
 import { TouchID } from '@ionic-native/touch-id';
 import { EmailValidator } from '../../validators/email';
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
 
-declare var FingerprintAuth: any;
 declare var plugins: any;
 
 @IonicPage()
@@ -27,7 +27,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   loading: Loading;
 
-  constructor(private _platform: Platform,
+  constructor(
     private _loadingController: LoadingController,
     private _alertController: AlertController,
     private _authProvider: AuthProvider,
@@ -40,19 +40,6 @@ export class LoginComponent {
         Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['',
         Validators.compose([Validators.minLength(6), Validators.required])]
-    });
-
-    this._platform.ready().then(() => {
-      // if (this._auth.isAuthenticated()) {
-      //   console.log('user is already authenticated');
-      //   if (this._platform.is('android')) {
-      //     console.log('platform is android');
-      //     this.showFingerprintAndroid();
-      //   } else if (this._platform.is('ios')) {
-      //     console.log('platform is ios');
-      //     this.showFingerprintIos();
-      //   }
-      // }
     });
   }
 

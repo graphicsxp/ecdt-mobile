@@ -1,3 +1,4 @@
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AuthProvider } from './../providers/auth/auth';
 import { Component, ViewChild } from '@angular/core';
@@ -35,9 +36,10 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform,
+  constructor(private _platform: Platform,
     private _auth: AuthProvider,
     private _alertController: AlertController,
+    private _androidFingerprintAuth: AndroidFingerprintAuth,
     private fcm: FCM,
     public quickActionService: QuickActionService,
     private statusBar: StatusBar,
@@ -49,7 +51,7 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this._platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.appVersion.getAppName().then(v => this.app['name'] = v);
@@ -79,17 +81,11 @@ export class MyApp {
           }
         }
       );
-
-      if (this.splashScreen) {
-        setTimeout(() => {
-          this.splashScreen.hide();
-        }, 100);
-      }
     });
   }
 
   initializeFirebase() {
-    this.platform.ready().then(() =>   {
+    this._platform.ready().then(() => {
       var config = {
         apiKey: "AIzaSyBAHq9j_P_iMnArK67woWQ30PLvno9iMls",
         authDomain: "ecdt-mobile.firebaseapp.com",
@@ -105,26 +101,27 @@ export class MyApp {
           this.rootPage = 'LoginComponent';
           unsubscribe();
         } else {
+          console.log('user is already authenticated');
           this.username = user.displayName;
-          this.rootPage = 'CalendarPage';
+          if (this._platform.is('android')) {
+            console.log('platform is android');
+            this.showFingerprintAndroid();
+          } else if (this._platform.is('ios')) {
+            // console.log('platform is ios');
+            // this.showFingerprintIos();
+          }
+
+          //this.rootPage = 'CalendarPage';
           unsubscribe();
         }
       });
 
-      if (this.platform.is('cordova')) {
+      if (this._platform.is('cordova')) {
         this.fcm.getToken().then((t) => {
           console.log(t.toString());
-          this.fcm.subscribeToTopic(t.toString());
-          let alert = this._alertController.create({
-            message: t.toString(),
-            buttons: [
-              {
-                text: "Ok",
-                role: 'cancel'
-              }
-            ]
-          });
-          alert.present();
+          if (this.splashScreen) {
+            this.splashScreen.hide();
+          }
         });
 
         this.fcm.onNotification().subscribe(data => {
@@ -148,7 +145,7 @@ export class MyApp {
           this.nav.setRoot('CalendarPage', { title: data.notificationTitle + ':' + data.notificationMessage, taskDeadline: data.taskDeadline, taskType: data.taskType });
           this.numberOfCalendarEvents++;
         })
-        }
+      }
     });
   }
 
@@ -185,4 +182,48 @@ export class MyApp {
     });
     confirm.present();
   }
+
+  async showFingerprintAndroid() {
+    console.log('fingerprint android authentication started');
+    var token = await this._auth.getToken();
+    var clientId = this._auth.getUserEmail();
+    var self = this;
+
+    this._androidFingerprintAuth.isAvailable().then(function (result) {
+      if (result.isAvailable) {
+        if (result.hasEnrolledFingerprints) {
+          self._androidFingerprintAuth.encrypt({
+            clientId: clientId,
+            token: token
+          }).then(function (result: any) {
+            if (result.withFingerprint || result.withBackup || result.withPassword) {
+              self.nav.setRoot('CalendarPage');
+            }
+          }).catch(function (error) {
+            console.log(error);
+          });
+        }
+      }
+    });
+  }
+
+  // showFingerprintIos() {
+  //   console.log('fingerprint ios authentication started');
+  //   var navController = this._navController;
+  //   console.log(TouchID);
+  //   TouchID.isAvailable()
+  //     .then(
+  //     res => {
+  //       TouchID.verifyFingerprint('Scan your fingerprint please')
+  //         .then(
+  //         res => {
+  //           console.log('ok: ' + res);
+  //           navController.setRoot(RequestListComponent);
+  //         },
+  //         err => alert('Something is wrong: ' + JSON.stringify(err))
+  //         );
+  //     },
+  //     err => console.log('touchid not available: ' + err)
+  //     );
+  // }
 }
