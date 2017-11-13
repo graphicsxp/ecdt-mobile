@@ -42,11 +42,11 @@ export class MyApp {
     private splashScreen: SplashScreen,
     private appVersion: AppVersion) {
     this.initializeApp();
-    this.initializeFirebase();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.initializeFirebase();
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

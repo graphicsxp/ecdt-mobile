@@ -4,7 +4,10 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import 'rxjs/Rx'; // load all features of reactive extensions
+//import 'rxjs/Rx'; // load all features of reactive extensions
+import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
