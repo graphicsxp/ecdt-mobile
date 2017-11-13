@@ -21,6 +21,12 @@
     </ion-item>
 
     <ion-item>
+      <ion-label stacked>Username</ion-label>
+      <ion-input formControlName="username" type="text" placeholder="Your username address" [class.invalid]="!signupForm.controls.username.valid && blur">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label stacked>Password</ion-label>
       <ion-input formControlName="password" type="password" placeholder="Your password" [class.invalid]="!signupForm.controls.password.valid && blur">
       </ion-input>

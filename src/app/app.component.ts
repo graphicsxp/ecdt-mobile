@@ -105,7 +105,16 @@ export class MyApp {
         this.fcm.subscribeToTopic('marketing');
 
         this.fcm.getToken().then((t) => {
-          console.log('Token received:', t)
+          let alert = this._alertController.create({
+            message: t.toString(),
+            buttons: [
+              {
+                text: "Ok",
+                role: 'cancel'
+              }
+            ]
+          });
+          alert.present();
         });
 
         this.fcm.onNotification().subscribe(data => {

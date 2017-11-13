@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "localId": "uid1",
+      "email": "graphicsxp@hotmail.fr",
+      "passwordHash": "OTUwNDllMmRkN2NhN2ZkZDgxNzZlMDhlYTc4M2JhZDE=",
+      "emailVerified": true,
+      "salt": "cXdlcnR5",
+      "displayName": "tavodso"
+    }
+  ]
+}
