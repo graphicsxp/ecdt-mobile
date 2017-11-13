@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AuthProvider } from './../providers/auth/auth';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
@@ -26,6 +27,7 @@ export class MyApp {
   requestListComponent = RequestListComponent;
 
   numberOfDeliveredRequests: number = 0;
+  numberOfCalendarEvents: number = 0;
   app: any = {
     name: '',
     versionCode: '',
@@ -40,14 +42,14 @@ export class MyApp {
     public quickActionService: QuickActionService,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private appVersion: AppVersion) {
+    private appVersion: AppVersion,
+    private _localNotifications: LocalNotifications) {
     this.initializeApp();
+    this.initializeFirebase();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.initializeFirebase();
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.appVersion.getAppName().then(v => this.app['name'] = v);
@@ -87,32 +89,32 @@ export class MyApp {
   }
 
   initializeFirebase() {
+    this.platform.ready().then(() =>   {
+      var config = {
+        apiKey: "AIzaSyBAHq9j_P_iMnArK67woWQ30PLvno9iMls",
+        authDomain: "ecdt-mobile.firebaseapp.com",
+        databaseURL: "https://ecdt-mobile.firebaseio.com",
+        projectId: "ecdt-mobile",
+        storageBucket: "ecdt-mobile.appspot.com",
+        messagingSenderId: "253214739305"
+      };
+      firebase.initializeApp(config);
 
-    var config = {
-      apiKey: "AIzaSyBAHq9j_P_iMnArK67woWQ30PLvno9iMls",
-      authDomain: "ecdt-mobile.firebaseapp.com",
-      databaseURL: "https://ecdt-mobile.firebaseio.com",
-      projectId: "ecdt-mobile",
-      storageBucket: "ecdt-mobile.appspot.com",
-      messagingSenderId: "253214739305"
-    };
-    firebase.initializeApp(config);
-
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        this.rootPage = 'LoginComponent';
-        unsubscribe();
-      } else {
-        this.username = user.displayName;
-        this.rootPage = 'CalendarPage';
-        unsubscribe();
-      }
-    });
+      const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+        if (!user) {
+          this.rootPage = 'LoginComponent';
+          unsubscribe();
+        } else {
+          this.username = user.displayName;
+          this.rootPage = 'CalendarPage';
+          unsubscribe();
+        }
+      });
 
       if (this.platform.is('cordova')) {
-        this.fcm.subscribeToTopic('marketing');
-
         this.fcm.getToken().then((t) => {
+          console.log(t.toString());
+          this.fcm.subscribeToTopic(t.toString());
           let alert = this._alertController.create({
             message: t.toString(),
             buttons: [
@@ -126,15 +128,28 @@ export class MyApp {
         });
 
         this.fcm.onNotification().subscribe(data => {
+          console.log(data);
           if (data.wasTapped) {
-
+            this.nav.setRoot('CalendarPage');
           } else {
-
+            this._localNotifications.schedule({
+              id: 1,
+              text: data.notification_title,
+              data: {
+                title: data.notificationTitle,
+                body: data.notificationMessage,
+                targetLanguage: data.targetLanguage,
+                taskDeadline: data.taskDeadline,
+                taskType: data.taskType
+              }
+            });
           };
 
-          this.numberOfDeliveredRequests++;
+          this.nav.setRoot('CalendarPage', { title: data.notificationTitle + ':' + data.notificationMessage, taskDeadline: data.taskDeadline, taskType: data.taskType });
+          this.numberOfCalendarEvents++;
         })
-      }
+        }
+    });
   }
 
   openPage(page) {
@@ -142,6 +157,9 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     if (page == this.requestListComponent) {
       this.numberOfDeliveredRequests = 0;
+    }
+    if (page === 'CalendarPage') {
+      this.numberOfCalendarEvents = 0;
     }
     console.log('openPage called with:' + page);
     this.nav.setRoot(page);

@@ -107,4 +107,6 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
     <plugin name="cordova-plugin-file" spec="^5.0.0" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="~0.8.5" />
+    <allow-navigation href="http://10.66.2.96:8100" />
 </widget>

@@ -15,6 +15,7 @@ import { RequestModule } from './../pages/request/request.module';
 import { SharedModule } from '../pages/shared/shared.module';
 
 import { AuthProvider } from '../providers/auth/auth';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import { FCM } from '@ionic-native/fcm';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,6 +45,7 @@ import { AppVersion } from '@ionic-native/app-version';
     AuthProvider,
     SplashScreen,
     StatusBar,
-    AppVersion]
+    AppVersion,
+    LocalNotifications,]
 })
 export class AppModule { }
