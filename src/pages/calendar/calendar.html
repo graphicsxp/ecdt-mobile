@@ -6,27 +6,26 @@
 -->
 
 <ion-header class="opaque">
-	<ion-navbar>
-		<button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-		<ion-title>Calendar</ion-title>
-	</ion-navbar>
-  <ion-navbar>
-    <ion-title>{{viewTitle}}</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addEvent()">
+        <ion-title>Calendar</ion-title>
+    </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{viewTitle}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="addEvent()">
         <ion-icon name="add"></ion-icon>
       </button>
-      <button ion-button icon-only (click)="switchMode()">
+            <button ion-button icon-only (click)="switchMode()">
         <ion-icon name="calendar"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)"
-    (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
-  </calendar>
+    <calendar [dateFormatter]="calendar.dateFormatter" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)"
+        step="30" class="calendar">
+    </calendar>
 </ion-content>

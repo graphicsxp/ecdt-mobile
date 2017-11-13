@@ -2,17 +2,18 @@ import { Platform } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { Observable } from  'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
-import { ThreeDeeTouch, /*ThreeDeeTouchForceTouch,*/ ThreeDeeTouchQuickAction } from 'ionic-native';
+import { ThreeDeeTouch, ThreeDeeTouchForceTouch, ThreeDeeTouchQuickAction } from '@ionic-native/three-dee-touch';
 
 @Injectable()
 export class QuickActionService {
   public onHomeIconPressed: Observable<any>;
   private _dataObserver: Observer<any>;
-  constructor(platform: Platform) {
-    
+  constructor(platform: Platform,
+    private threeDeeTouch: ThreeDeeTouch) {
+
     platform.ready().then(() => {
       this.onHomeIconPressed = new Observable(observer => this._dataObserver = observer);
-      ThreeDeeTouch.isAvailable().then(isAvailable =>  {
+      this.threeDeeTouch.isAvailable().then(isAvailable =>  {
             console.log('3D Touch available? ' + isAvailable);
             // ThreeDeeTouch.watchForceTouches()
             // .subscribe(
@@ -44,10 +45,10 @@ export class QuickActionService {
                 iconType: 'Home'
             }
             ];
-            ThreeDeeTouch.configureQuickActions(actions);
-            
+            this.threeDeeTouch.configureQuickActions(actions);
+
             /// if 3Dtouch is supported, we subscribe and feed the data observable
-            ThreeDeeTouch.onHomeIconPressed().subscribe(
+            this.threeDeeTouch.onHomeIconPressed().subscribe(
                 (payload) => {
                     // returns an object that is the button you presed
                     console.log('Pressed the ${payload.title} button')

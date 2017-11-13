@@ -1,6 +1,6 @@
 import { Platform } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-import { Network } from 'ionic-native';
+import { Network } from '@ionic-native/network';
 import { LoadingService } from './loading-service';
 
 @Injectable()
@@ -8,27 +8,31 @@ export class NetworkAvailabilityService {
   private _disconnectSubscription: any;
   private _connectSubscription: any;
   private _connected: boolean;
+  private _network: Network;
 
-  constructor(platform:Platform, loadingService: LoadingService) {
+  constructor(platform:Platform,
+    loadingService: LoadingService,
+    network: Network) {
+    this._network = network;
     platform.ready().then(() => {
       this._connected = this.networkAvailable();
       console.log('subscribing to network events');
-      this._disconnectSubscription = Network.onDisconnect().subscribe(() => {
-        console.log('network disconnected:' + Network.type);
+      this._disconnectSubscription = network.onDisconnect().subscribe(() => {
+        console.log('network disconnected:' + network.type);
         setTimeout(() => {
-          if (Network.type === 'none' && this._connected === true) {
+          if (network.type === 'none' && this._connected === true) {
             this._connected = false;
-            console.log('network disconnected handled:' + Network.type);
+            console.log('network disconnected handled:' + network.type);
             loadingService.presentNetworkNotAvailableLoading();
           }
         }, 1500);
       });
-      this._connectSubscription = Network.onConnect().subscribe(() => {
-        console.log('network connected:' + Network.type);
+      this._connectSubscription = network.onConnect().subscribe(() => {
+        console.log('network connected:' + network.type);
         setTimeout(() => {
-          if (Network.type !== 'none' && this._connected === false) {
+          if (network.type !== 'none' && this._connected === false) {
             this._connected = true;
-            console.log('network connected handled:' + Network.type);
+            console.log('network connected handled:' + network.type);
             loadingService.hideNetworkLoading();
           }
         }, 1500);
@@ -43,6 +47,6 @@ export class NetworkAvailabilityService {
   }
 
   networkAvailable() {
-    return Network.type != 'none';
+    return this._network.type != 'none';
   }
 }

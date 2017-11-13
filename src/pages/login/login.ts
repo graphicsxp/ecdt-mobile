@@ -4,7 +4,7 @@ import { AuthProvider } from './../../providers/auth/auth';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { IonicPage, NavController, Loading, LoadingController, MenuController, Platform, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { TouchID } from 'ionic-native';
+import { TouchID } from '@ionic-native/touch-id';
 import { EmailValidator } from '../../validators/email';
 
 declare var FingerprintAuth: any;

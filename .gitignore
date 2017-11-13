@@ -13,6 +13,7 @@ log.txt
 npm-debug.log*
 
 .idea/
+.sourcemaps/
 .sass-cache/
 .tmp/
 .versions/
@@ -21,6 +22,7 @@ dist/
 node_modules/
 tmp/
 temp/
+hooks/
 platforms/
 plugins/
 plugins/android.json
@@ -31,7 +33,3 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
-
-src/api/db.json
-package-lock.json
-.sourcemaps

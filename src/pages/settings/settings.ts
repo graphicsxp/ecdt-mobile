@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, IonicPage } from 'ionic-angular';
 
-import { Insomnia, NativeStorage, Calendar } from 'ionic-native';
+import { Insomnia } from '@ionic-native/insomnia';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { Calendar } from '@ionic-native/calendar';
 
 @IonicPage()
 
@@ -13,10 +15,14 @@ export class SettingsPage {
 
   public keepAwake: boolean = false;
 
-  constructor(public navCtrl: NavController, private _platform: Platform) {
+  constructor(public navCtrl: NavController,
+    private _platform: Platform,
+    private insomnia: Insomnia,
+    private calendar: Calendar,
+    private nativeStorage: NativeStorage) {
     this._platform.ready().then(() => {
       console.log('Hello Settings Page');
-      NativeStorage.getItem("keepAwake").then(
+      this.nativeStorage.getItem("keepAwake").then(
         data => this.keepAwake = data,
         error => console.log('error retrieving keepAwake from native storage')
       );
@@ -24,9 +30,9 @@ export class SettingsPage {
   }
 
   createEvent(): void {
-    Calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0)).then(
+    this.calendar.createEvent('New meeting', 'Salle Vienne', 'discussion about TRA module', new Date(2017, 3, 1, 9, 0), new Date(2017, 3, 1, 11, 0)).then(
       (msg) => {
-        Calendar.openCalendar(new Date(2017, 3, 1, 9, 0));
+        this.calendar.openCalendar(new Date(2017, 3, 1, 9, 0));
       },
       (err) => { console.log(err); }
     );
@@ -35,17 +41,17 @@ export class SettingsPage {
   onKeepAwake(): void {
     console.log('onchange keep awake');
 
-    NativeStorage.setItem("keepAwake", this.keepAwake).then(
+    this.nativeStorage.setItem("keepAwake", this.keepAwake).then(
       () => console.log('storing keepAwake in native storage successful')
     );
 
     if (this.keepAwake) {
-      Insomnia.keepAwake().then(
+      this.insomnia.keepAwake().then(
         () => console.log('keep awake successful'),
         () => console.log('keep awake failed')
       );
     } else {
-      Insomnia.allowSleepAgain().then(
+      this.insomnia.allowSleepAgain().then(
         () => console.log('allow sleep again successful'),
         () => console.log('allow sleep again failed')
       );

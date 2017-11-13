@@ -23,7 +23,19 @@ export class CalendarPage {
     mode: 'day',
     modeIndex: 0,
     modes: ['day', 'week', 'month'],
-    currentDate: new Date()
+    currentDate: new Date(),
+    dateFormatter: {
+      formatDayViewHourColumn: function(date:Date) {
+        return moment(date).format('ha')
+      },
+      formatWeekViewHourColumn: function(date:Date) {
+        return moment(date).format('ha')
+      },
+      formatWeekViewTitle: function(date:Date) {
+        var d=moment(date);
+        return d.format('MMMM YYYY')+", Week "+d.format("W");
+      }
+  }
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController) {

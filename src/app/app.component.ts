@@ -2,8 +2,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AuthProvider } from './../providers/auth/auth';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-import { AppVersion } from 'ionic-native';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { AppVersion } from '@ionic-native/app-version';
 import { FCM } from '@ionic-native/fcm';
 
 import * as firebase from "firebase";
@@ -34,28 +35,30 @@ export class MyApp {
     packageName: ''
   };
 
-  constructor(public platform: Platform, private _auth: AuthProvider,
+  constructor(public platform: Platform,
+    private _auth: AuthProvider,
     private _alertController: AlertController,
     private fcm: FCM,
-    private _localNotifications: LocalNotifications,
-    public quickActionService: QuickActionService) {
-
+    public quickActionService: QuickActionService,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private appVersion: AppVersion,
+    private _localNotifications: LocalNotifications) {
     this.initializeApp();
     this.initializeFirebase();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      AppVersion.getAppName().then(v => this.app['name'] = v);
-      AppVersion.getVersionCode().then(v => this.app['versionCode'] = v);
-      AppVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
-      AppVersion.getPackageName().then(v => this.app['packageName'] = v);
+      this.appVersion.getAppName().then(v => this.app['name'] = v);
+      this.appVersion.getVersionCode().then(v => this.app['versionCode'] = v);
+      this.appVersion.getVersionNumber().then(v => this.app['versionNumber'] = v);
+      this.appVersion.getPackageName().then(v => this.app['packageName'] = v);
 
-      StatusBar.styleDefault();
-      StatusBar.overlaysWebView(false); // for ios overlapping
+      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false); // for ios overlapping
 
       // quick action service
       this.quickActionService.onHomeIconPressed.subscribe(
@@ -77,76 +80,76 @@ export class MyApp {
         }
       );
 
-      if (Splashscreen) {
+      if (this.splashScreen) {
         setTimeout(() => {
-          Splashscreen.hide();
+          this.splashScreen.hide();
         }, 100);
       }
     });
   }
 
   initializeFirebase() {
+    this.platform.ready().then(() =>   {
+      var config = {
+        apiKey: "AIzaSyBAHq9j_P_iMnArK67woWQ30PLvno9iMls",
+        authDomain: "ecdt-mobile.firebaseapp.com",
+        databaseURL: "https://ecdt-mobile.firebaseio.com",
+        projectId: "ecdt-mobile",
+        storageBucket: "ecdt-mobile.appspot.com",
+        messagingSenderId: "253214739305"
+      };
+      firebase.initializeApp(config);
 
-    var config = {
-      apiKey: "AIzaSyBAHq9j_P_iMnArK67woWQ30PLvno9iMls",
-      authDomain: "ecdt-mobile.firebaseapp.com",
-      databaseURL: "https://ecdt-mobile.firebaseio.com",
-      projectId: "ecdt-mobile",
-      storageBucket: "ecdt-mobile.appspot.com",
-      messagingSenderId: "253214739305"
-    };
-    firebase.initializeApp(config);
-
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        this.rootPage = 'LoginComponent';
-        unsubscribe();
-      } else {
-        this.username = user.displayName;
-        this.rootPage = 'CalendarPage';
-        unsubscribe();
-      }
-    });
-
-    if (this.platform.is('cordova')) {
-      this.fcm.getToken().then((t) => {
-        console.log(t.toString());
-        this.fcm.subscribeToTopic(t.toString());
-        let alert = this._alertController.create({
-          message: t.toString(),
-          buttons: [
-            {
-              text: "Ok",
-              role: 'cancel'
-            }
-          ]
-        });
-        alert.present();
+      const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+        if (!user) {
+          this.rootPage = 'LoginComponent';
+          unsubscribe();
+        } else {
+          this.username = user.displayName;
+          this.rootPage = 'CalendarPage';
+          unsubscribe();
+        }
       });
 
-      this.fcm.onNotification().subscribe(data => {
-        console.log(data);
-        if (data.wasTapped) {
-          this.nav.setRoot('CalendarPage');
-        } else {
-          this._localNotifications.schedule({
-            id: 1,
-            text: data.notification_title,
-            data: {
-              title: data.notificationTitle,
-              body: data.notificationMessage,
-              targetLanguage: data.targetLanguage,
-              taskDeadline: data.taskDeadline,
-              taskType: data.taskType
-            }
+      if (this.platform.is('cordova')) {
+        this.fcm.getToken().then((t) => {
+          console.log(t.toString());
+          this.fcm.subscribeToTopic(t.toString());
+          let alert = this._alertController.create({
+            message: t.toString(),
+            buttons: [
+              {
+                text: "Ok",
+                role: 'cancel'
+              }
+            ]
           });
-        };
+          alert.present();
+        });
 
-        this.nav.setRoot('CalendarPage', { title: data.notificationTitle + ':' + data.notificationMessage, taskDeadline: data.taskDeadline, taskType: data.taskType });
+        this.fcm.onNotification().subscribe(data => {
+          console.log(data);
+          if (data.wasTapped) {
+            this.nav.setRoot('CalendarPage');
+          } else {
+            this._localNotifications.schedule({
+              id: 1,
+              text: data.notification_title,
+              data: {
+                title: data.notificationTitle,
+                body: data.notificationMessage,
+                targetLanguage: data.targetLanguage,
+                taskDeadline: data.taskDeadline,
+                taskType: data.taskType
+              }
+            });
+          };
 
-        this.numberOfCalendarEvents++;
-      })
-    }
+          this.nav.setRoot('CalendarPage', { title: data.notificationTitle + ':' + data.notificationMessage, taskDeadline: data.taskDeadline, taskType: data.taskType });
+          this.numberOfCalendarEvents++;
+        })
+        }
+    });
   }
 
   openPage(page) {

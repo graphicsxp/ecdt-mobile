@@ -1,20 +1,26 @@
-import { RequestModule } from './../pages/request/request.module';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { FCM } from '@ionic-native/fcm';
-
-import { IonicApp, IonicModule } from 'ionic-angular';
-
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
+//import 'rxjs/Rx'; // load all features of reactive extensions
+import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RequestModule } from './../pages/request/request.module';
 import { SharedModule } from '../pages/shared/shared.module';
-
-import 'rxjs/Rx'; // load all features of reactive extensions
 
 import { AuthProvider } from '../providers/auth/auth';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+
+import { FCM } from '@ionic-native/fcm';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { AppVersion } from '@ionic-native/app-version';
 
 @NgModule({
   declarations: [
@@ -22,6 +28,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     RequestModule,
     SharedModule,
@@ -32,8 +39,13 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   entryComponents: [
     MyApp
   ],
-  providers: [FCM,
-    LocalNotifications,
-    AuthProvider]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FCM,
+    AuthProvider,
+    SplashScreen,
+    StatusBar,
+    AppVersion,
+    LocalNotifications,]
 })
 export class AppModule { }
