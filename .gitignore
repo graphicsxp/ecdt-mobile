@@ -34,3 +34,4 @@ UserInterfaceState.xcuserstate
 
 src/api/db.json
 package-lock.json
+.sourcemaps
