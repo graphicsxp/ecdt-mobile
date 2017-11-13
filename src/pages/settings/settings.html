@@ -1,24 +1,37 @@
 <ion-header class="opaque">
-	<ion-navbar>
-		<button ion-button menuToggle>
+  <ion-navbar>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-		<ion-title>settings</ion-title>
-	</ion-navbar>
+    <ion-title>settings</ion-title>
+  </ion-navbar>
 </ion-header>
 <ion-content padding>
-	<ion-list>
-		<ion-item>
-			<ion-toggle [(ngModel)]="keepAwake" (ionChange)="onKeepAwake()"></ion-toggle>
-			<ion-label>
-				Keep awake
-			</ion-label>
-			<ion-icon name='battery-charging' item-left></ion-icon>
-		</ion-item>
 
-		<ion-item>
-			<button ion-button full (click)="createEvent()" color="primary" class="login-button">Create event in calendar</button>
-		</ion-item>
-	</ion-list>
-	<button ion-button full (click)="createEvent()" color="primary" class="login-button">Create event in calendar</button>
+  <ion-list>
+    <ion-list-header>
+      General
+    </ion-list-header>
+    <ion-item>
+      <ion-toggle [(ngModel)]="keepAwake" (ionChange)="onKeepAwake()"></ion-toggle>
+      <ion-label> Keep awake </ion-label>
+      <ion-icon name='battery-charging' item-left></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Notifications
+    </ion-list-header>
+    <ion-item-group>
+      <ion-item>
+        <ion-toggle [(ngModel)]="InternalTask"></ion-toggle>
+        <ion-label> Internal Tasks </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-toggle [(ngModel)]="QualityControltask"></ion-toggle>
+        <ion-label>Quality Control Tasks</ion-label>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>
